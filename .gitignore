@@ -1,0 +1,16 @@
+# Editor folders and files
+.vscode/
+.idea/
+.DS_Store
+
+# Temporary and scratch files
+scratch/
+previews/
+
+# Verification and test files generated during development
+verification.json
+test_slab.svg
+
+# Python
+__pycache__/
+*.pyc

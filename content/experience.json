@@ -1,0 +1,34 @@
+[
+  {
+    "id": "betopia-limited",
+    "company": "Betopia Limited",
+    "location": "Dhaka, Bangladesh",
+    "role": "AI Engineer",
+    "isCurrent": true,
+    "badge": "Betopia AI Champion · 2026",
+    "period": "Mar 2026 – Present",
+    "description": "Building the Betopia AI ecosystem across web chat, model infrastructure, and developer tools.",
+    "responsibilities": [
+      "Built Betopia.ai ecosystem, the company's internal AI platform: LLM API gateway, web chat, a coding-agent CLI, and an IDE extension in beta with 700+ employees.",
+      "Self-hosted Qwen3.6 and Ornith-1.5 on vLLM on one 96GB NVIDIA Blackwell GPU, removing third-party inference costs while keeping TTFT under 1 second.",
+      "Designed and maintained LangGraph agent runtime with explicit state checkpoints, tool calling, Agentic Search Engine, and SSE streaming.",
+      "Wrote the context assembly layer assembling prompts dynamically from system, project, repo tree, and session sources with smart eviction."
+    ]
+  },
+  {
+    "id": "sm-technology",
+    "company": "SM Technology",
+    "location": "Dhaka, Bangladesh",
+    "role": "AI Engineer",
+    "isCurrent": false,
+    "badge": "Strategic Business Unit of Betopia Limited",
+    "period": "Nov 2025 – Feb 2026",
+    "description": "Built enterprise retrieval systems and AI applications supported by modular backend services.",
+    "responsibilities": [
+      "Designed Firecomm AI, a role-aware Agentic RAG platform for 2,200+ enterprise users: RBAC-scoped retrieval, hybrid search (dense + BM25), and cited answers over 500+ documents.",
+      "Built an AI fitness platform with LLM-generated workout and nutrition plans, social features, and a multi-vendor marketplace on FastAPI containerized with Docker.",
+      "Implemented a four-stage recommendation pipeline on PGVector with dense embeddings, cross-encoder re-ranking, and metadata filtering.",
+      "Shipped a voice-enabled RAG system over a large educational corpus with low-latency grounded inference."
+    ]
+  }
+]

@@ -1,0 +1,93 @@
+{
+  "revisionDate": "September 2026",
+  "summary": "AI Engineer building production LLM systems: retrieval pipelines, multi-agent orchestration, and model fine-tuning. Selected as Betopia AI Champion, ranked the top AI Engineer across all of Betopia’s business units (2026). I focus on self-hosted LLM infrastructure that runs at enterprise scale on-premises, using vLLM for GPU serving, LangGraph for agent workflows, RAG, and LoRA/QLoRA/GRPO for fine-tuning, in Python and FastAPI.",
+  "technicalSkills": {
+    "AI / ML": [
+      "LLMs",
+      "Agentic Chat",
+      "RAG",
+      "multi-agent systems",
+      "fine-tuning (LoRA, QLoRA, GRPO, RLHF)",
+      "PEFT",
+      "transformers",
+      "NLP",
+      "vector search",
+      "deep learning"
+    ],
+    "LLM Serving & APIs": [
+      "vLLM (GPU inference)",
+      "Hugging Face Transformers",
+      "TRL",
+      "OpenAI API",
+      "Anthropic Claude API",
+      "Model Context Protocol (MCP)"
+    ],
+    "Frameworks & Orchestration": [
+      "LangChain",
+      "LangGraph",
+      "FastAPI",
+      "Streamlit",
+      "Gradio",
+      "Node.js",
+      "Express.js",
+      "React"
+    ],
+    "Data & Vector Stores": [
+      "PostgreSQL",
+      "PGVector",
+      "ChromaDB",
+      "MongoDB",
+      "Redis"
+    ],
+    "Languages": [
+      "Python",
+      "SQL",
+      "JavaScript",
+      "Java",
+      "C"
+    ],
+    "Tools & MLOps": [
+      "Docker",
+      "Docker Compose",
+      "MLflow",
+      "Git",
+      "Pandas",
+      "NumPy"
+    ]
+  },
+  "education": [
+    {
+      "institution": "Green University of Bangladesh",
+      "degree": "B.Sc. in Computer Science and Engineering",
+      "period": "Jan 2022 – Feb 2026",
+      "location": "Dhaka, Bangladesh"
+    }
+  ],
+  "publications": [
+    {
+      "citation": "Md. A. Rahman*, M. N. Hasan, M. S. Hossain, W. Tasnim, and S. S. Nakshi, \"Enhanced Hybrid Deep Learning Approach for Heart Attack Prediction Using ECG Data,\" presented at the 5th IEEE International Conference on Signal Processing, Information, Communication and Systems (SPICSCON 2026), Natore, Bangladesh, Aug. 2026.",
+      "conference": "5th IEEE SPICSCON 2026",
+      "date": "Aug 2026"
+    }
+  ],
+  "achievements": [
+    "Betopia AI Champion (2026) – ranked the top AI Engineer across all Strategic Business Units of Betopia Limited in a company-wide competitive selection.",
+    "Ranked among top participants at BLP Workshop and BUBT AI Conquest competitive AI/ML events.",
+    "Solved 100+ LeetCode problems, focused on dynamic programming, graph algorithms, and system-level optimisation.",
+    "Led multiple university software projects using Agile/Scrum: sprint planning, code review, and cross-functional coordination."
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "proficiency": "Fluent"
+    },
+    {
+      "name": "Bengali",
+      "proficiency": "Native"
+    },
+    {
+      "name": "Hindi",
+      "proficiency": "Fluent"
+    }
+  ]
+}

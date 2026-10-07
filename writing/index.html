@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="description"
+    content="Articles and practical notes by Md. Abdur Rahman on AI engineering, LLM systems, backend development, and building useful software." />
+  <title>Writing — Md. Abdur Rahman</title>
+  <link rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232A1D17'/%3E%3Cpath d='M8 23l8-15 8 15M11 18h10' stroke='%23FAF7F2' fill='none' stroke-width='2'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "background": "#F7F3EA",
+            "surface": "#FAF7F2",
+            "surface-bright": "#FAF7F2",
+            "surface-container-lowest": "#FFFFFF",
+            "surface-container-low": "#F4EFE6",
+            "surface-container": "#EDE6DA",
+            "surface-container-high": "#E5DDCF",
+            "surface-container-highest": "#DDD3C3",
+            "surface-dim": "#D8CEBE",
+            "surface-variant": "#EAE3D6",
+
+            "on-background": "#2A1D17",
+            "on-surface": "#2A1D17",
+            "on-surface-variant": "#675446",
+            "outline": "#8C7562",
+            "outline-variant": "rgba(53, 37, 30, 0.12)",
+            "inverse-surface": "#2A1D17",
+            "inverse-on-surface": "#FAF7F2",
+
+            "primary": "#A84128",
+            "primary-container": "#B64D32",
+            "primary-fixed": "#F8EAE5",
+            "primary-fixed-dim": "#EDD2C8",
+            "on-primary": "#FFFFFF",
+            "on-primary-container": "#FFFFFF",
+            "on-primary-fixed": "#3E1309",
+            "on-primary-fixed-variant": "#7A2A17",
+
+            "secondary": "#B5711C",
+            "secondary-container": "#C27D26",
+            "secondary-fixed": "#F8EEDF",
+            "on-secondary": "#FFFFFF",
+
+            "tertiary": "#2D6A4F",
+            "tertiary-container": "#2D6A4F",
+            "tertiary-fixed": "#E8F3EE",
+            "on-tertiary": "#FFFFFF"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.5rem",
+            "gutter": "1.5rem",
+            "margin": "2rem"
+          },
+          fontFamily: {
+            "serif": ["Newsreader", "Georgia", "serif"],
+            "sans": ["Inter", "-apple-system", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"],
+            "label-sm": ["JetBrains Mono", "monospace"],
+            "label-md": ["JetBrains Mono", "monospace"],
+            "body-sm": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "headline-sm": ["Inter", "sans-serif"],
+            "headline-md": ["Inter", "sans-serif"],
+            "headline-lg": ["Inter", "sans-serif"]
+          },
+          fontSize: {
+            "label-sm": ["11px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+            "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-md": ["15px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "body-lg": ["17px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "headline-md": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+            "headline-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.025em", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @layer base {
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #F7F3EA;
+        color: #2A1D17;
+      }
+
+      body {
+        overscroll-behavior: none;
+      }
+
+      main> :first-child {
+        margin-top: 0 !important;
+      }
+
+      main> :last-child {
+        margin-bottom: 0 !important;
+      }
+    }
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-pill {
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .article-item {
+      transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1), border-color 180ms ease;
+    }
+
+    .article-item:hover {
+      transform: translateY(-2px);
+    }
+
+    /* ========================================================
+       PREMIUM THREE-PART CAPSULE HEADER & NAVIGATION
+       ======================================================== */
+    :root {
+      --nav-track: rgba(28, 30, 36, 0.78);
+      --nav-active: rgba(255, 255, 255, 0.14);
+      --nav-text: #F3F4F6;
+      --nav-muted: #9CA3AF;
+      --nav-accent: #FFFFFF;
+      --nav-focus: rgba(255, 255, 255, 0.4);
+      --nav-border: rgba(255, 255, 255, 0.14);
+      --nav-inner-highlight: rgba(255, 255, 255, 0.12);
+      --nav-pill-transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1), width 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 92px;
+      z-index: 50;
+      background: transparent !important;
+      border-bottom: none !important;
+      box-shadow: none !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      pointer-events: none;
+    }
+
+    .site-header.is-scrolled .nav-capsule {
+      background: rgba(22, 23, 28, 0.88);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 12px 30px -4px rgba(0, 0, 0, 0.45);
+    }
+
+    .site-header.is-scrolled .nav-resume-btn {
+      background: rgba(22, 23, 28, 0.88);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 10px 24px -4px rgba(0, 0, 0, 0.35);
+    }
+
+    .site-header.is-scrolled .mobile-menu-btn {
+      background: rgba(22, 23, 28, 0.88);
+      border-color: rgba(255, 255, 255, 0.18);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 10px 24px -4px rgba(0, 0, 0, 0.35);
+    }
+
+    .header-container>* {
+      pointer-events: auto;
+    }
+
+    .header-container {
+      width: 100%;
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 clamp(16px, 3.5vw, 28px);
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @media (min-width: 1100px) {
+      .header-container {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items: center;
+        padding: 0 44px;
+      }
+    }
+
+    /* Left Wordmark */
+    .site-wordmark {
+      font-family: 'Manrope', 'Inter', sans-serif;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      color: #2A1D17;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 180ms ease, opacity 180ms ease;
+      justify-self: start;
+      outline: none;
+    }
+
+    .site-wordmark:hover {
+      color: #B64D32;
+    }
+
+    .site-wordmark:focus-visible {
+      outline: 2px solid var(--nav-focus);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+
+    .site-wordmark-name {
+      white-space: nowrap;
+    }
+
+    .site-wordmark-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: #8C7562;
+      background: rgba(53, 37, 30, 0.05);
+      border: 1px solid rgba(53, 37, 30, 0.12);
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+      white-space: nowrap;
+      transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .site-wordmark:hover .site-wordmark-badge {
+      color: #B64D32;
+      border-color: rgba(182, 77, 50, 0.35);
+      background: rgba(182, 77, 50, 0.08);
+    }
+
+    @media (max-width: 480px) {
+      .site-wordmark {
+        font-size: 16px;
+        gap: 6px;
+      }
+
+      .site-wordmark-badge {
+        font-size: 10px;
+        padding: 2px 6px;
+      }
+    }
+
+    /* Center Navigation Capsule */
+    .nav-capsule-wrapper {
+      display: none;
+    }
+
+    @media (min-width: 1100px) {
+      .nav-capsule-wrapper {
+        display: flex;
+        justify-content: center;
+        justify-self: center;
+      }
+    }
+
+    .nav-capsule {
+      position: relative;
+      height: 56px;
+      background: var(--nav-track);
+      -webkit-backdrop-filter: blur(16px) saturate(160%);
+      backdrop-filter: blur(16px) saturate(160%);
+      border: 1px solid var(--nav-border);
+      border-radius: 9999px;
+      padding: 5px;
+      box-shadow: inset 0 1px 0 var(--nav-inner-highlight), 0 8px 26px -4px rgba(0, 0, 0, 0.35);
+      display: inline-flex;
+      align-items: center;
+      overflow: hidden;
+      transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    /* Subtle cursor tracking spotlight */
+    .nav-spotlight {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: 9999px;
+      opacity: 0;
+      transition: opacity 180ms ease;
+      background: radial-gradient(120px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255, 255, 255, 0.08), transparent 70%);
+      z-index: 1;
+    }
+
+    /* Active background pill */
+    .nav-active-pill {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 44px;
+      border-radius: 9999px;
+      background: var(--nav-active);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 4px 12px rgba(0, 0, 0, 0.25);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: var(--nav-pill-transition), opacity 180ms ease;
+    }
+
+    .nav-item {
+      position: relative;
+      z-index: 2;
+      height: 44px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--nav-muted);
+      text-decoration: none;
+      border-radius: 9999px;
+      white-space: nowrap;
+      transition: color 160ms ease, background-color 160ms ease;
+      outline: none;
+      user-select: none;
+    }
+
+    .nav-item:hover:not(.is-active) {
+      color: #FFFFFF;
+      background-color: rgba(255, 255, 255, 0.04);
+    }
+
+    .nav-item.is-active {
+      color: var(--nav-text);
+      font-weight: 600;
+    }
+
+    .nav-item:focus-visible {
+      outline: 2px solid var(--nav-focus);
+      outline-offset: 2px;
+    }
+
+    /* Right Action Button (Résumé) */
+    .nav-actions-wrapper {
+      display: none;
+      justify-self: end;
+      align-items: center;
+    }
+
+    @media (min-width: 1100px) {
+      .nav-actions-wrapper {
+        display: flex;
+      }
+    }
+
+    .nav-resume-btn {
+      position: relative;
+      height: 54px;
+      padding: 0 24px;
+      background: var(--nav-track);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--nav-border);
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--nav-text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      box-shadow: inset 0 1px 0 var(--nav-inner-highlight), 0 8px 24px rgba(0, 5, 20, 0.35);
+      transition: background 180ms ease, border-color 180ms ease, box-shadow 180ms ease, transform 140ms ease;
+      outline: none;
+    }
+
+    .nav-resume-btn:hover {
+      background: #111B3E;
+      border-color: rgba(187, 203, 255, 0.35);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16), 0 6px 20px rgba(28, 39, 80, 0.4);
+      transform: translateY(-1px);
+    }
+
+    .nav-resume-btn:hover .resume-arrow {
+      transform: translate(2px, -2px);
+    }
+
+    .nav-resume-btn:active {
+      transform: scale(0.98);
+    }
+
+    .nav-resume-btn:focus-visible {
+      outline: 2px solid var(--nav-focus);
+      outline-offset: 3px;
+    }
+
+    .resume-arrow {
+      transition: transform 180ms ease;
+      color: var(--nav-accent);
+    }
+
+    /* Mobile Controls (< 1100px) */
+    .mobile-controls-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    @media (min-width: 1100px) {
+      .mobile-controls-wrapper {
+        display: none;
+      }
+    }
+
+    .mobile-menu-btn {
+      height: 44px;
+      padding: 0 18px;
+      background: rgba(8, 13, 36, 0.82);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(187, 203, 255, 0.22);
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--nav-text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 6px 20px rgba(0, 5, 20, 0.35);
+      cursor: pointer;
+      outline: none;
+      transition: background 160ms ease, border-color 160ms ease;
+    }
+
+    .mobile-menu-btn:hover {
+      background: #111B3E;
+      border-color: rgba(187, 203, 255, 0.32);
+    }
+
+    .mobile-menu-btn:focus-visible {
+      outline: 2px solid var(--nav-focus);
+      outline-offset: 2px;
+    }
+
+    .mobile-nav-panel {
+      position: absolute;
+      top: 86px;
+      right: 20px;
+      left: 20px;
+      max-width: 360px;
+      margin-left: auto;
+      background: #080D24;
+      border: 1px solid var(--nav-border);
+      border-radius: 1.25rem;
+      padding: 12px;
+      box-shadow: 0 20px 48px rgba(0, 4, 20, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+      z-index: 60;
+    }
+
+    .mobile-nav-panel.is-open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    @media (min-width: 1100px) {
+      .mobile-nav-panel {
+        display: none !important;
+      }
+    }
+
+    .mobile-nav-item {
+      min-height: 44px;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--nav-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 14.5px;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 10px;
+      transition: background 150ms ease, color 150ms ease;
+      outline: none;
+    }
+
+    .mobile-nav-item:hover,
+    .mobile-nav-item.is-active {
+      background: #1C2750;
+      color: var(--nav-text);
+      font-weight: 600;
+    }
+
+    .mobile-nav-item:focus-visible {
+      outline: 2px solid var(--nav-focus);
+    }
+
+    .mobile-resume-link {
+      margin-top: 6px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(187, 203, 255, 0.12);
+      color: var(--nav-accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body class="bg-background font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col">
+
+  <!-- Fixed Three-Part Capsule Header (Identical to Home Page) -->
+  <header class="site-header" id="site-header">
+    <div class="header-container">
+
+      <!-- Left: Typographic Wordmark -->
+      <a href="/#home" class="site-wordmark" aria-label="Md. Abdur Rahman — AI Engineer">
+        <span class="site-wordmark-name">Md. Abdur Rahman</span>
+        <span class="site-wordmark-badge">AI Engineer</span>
+      </a>
+
+      <!-- Center: Dark Floating Navigation Capsule (Desktop >= 1100px) -->
+      <div class="nav-capsule-wrapper">
+        <nav class="nav-capsule" id="desktop-nav" aria-label="Main navigation">
+          <!-- Spotlight following pointer -->
+          <div class="nav-spotlight" id="nav-spotlight" aria-hidden="true"></div>
+          <!-- Sliding active indicator pill -->
+          <div class="nav-active-pill" id="nav-active-pill" aria-hidden="true"></div>
+
+          <a href="/#home" class="nav-item" data-section="home">Home</a>
+          <a href="/#work" class="nav-item" data-section="work">Work</a>
+          <a href="/#expertise" class="nav-item" data-section="expertise">Expertise</a>
+          <a href="/#experience" class="nav-item" data-section="experience">Experience</a>
+          <a href="/#about" class="nav-item" data-section="about">About</a>
+          <a href="/writing" class="nav-item is-active" data-section="writing" aria-current="page">Writing</a>
+          <a href="/#contact" class="nav-item" data-section="contact">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Right: Action Button (Desktop >= 1100px) -->
+      <div class="nav-actions-wrapper">
+        <a href="/resume" class="nav-resume-btn" aria-label="View Résumé page">
+          <span>Résumé</span>
+          <svg class="resume-arrow" width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2.5 11.5L11.5 2.5M11.5 2.5H4.5M11.5 2.5V9.5" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mobile Controls (< 1100px) -->
+      <div class="mobile-controls-wrapper">
+        <button class="mobile-menu-btn" id="mobile-menu-btn" type="button" aria-expanded="false"
+          aria-controls="mobile-nav-panel" aria-label="Open navigation menu">
+          <span id="mobile-menu-text">Menu</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+            stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path id="icon-menu-bars" d="M4 6h16M4 12h16M4 18h16"></path>
+            <path id="icon-menu-close" class="hidden" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Panel -->
+      <div class="mobile-nav-panel" id="mobile-nav-panel" role="region" aria-label="Mobile navigation panel">
+        <a href="/#home" class="mobile-nav-item" data-section="home">
+          <span>Home</span>
+          <span class="text-xs font-mono text-slate-500">01</span>
+        </a>
+        <a href="/#work" class="mobile-nav-item" data-section="work">
+          <span>Work</span>
+          <span class="text-xs font-mono text-slate-500">02</span>
+        </a>
+        <a href="/#expertise" class="mobile-nav-item" data-section="expertise">
+          <span>Expertise</span>
+          <span class="text-xs font-mono text-slate-500">03</span>
+        </a>
+        <a href="/#experience" class="mobile-nav-item" data-section="experience">
+          <span>Experience</span>
+          <span class="text-xs font-mono text-slate-500">04</span>
+        </a>
+        <a href="/#about" class="mobile-nav-item" data-section="about">
+          <span>About</span>
+          <span class="text-xs font-mono text-slate-500">05</span>
+        </a>
+        <a href="/writing" class="mobile-nav-item is-active" data-section="writing">
+          <span>Writing</span>
+          <span class="text-xs font-mono text-slate-500">06</span>
+        </a>
+        <a href="/#contact" class="mobile-nav-item" data-section="contact">
+          <span>Contact</span>
+          <span class="text-xs font-mono text-slate-500">07</span>
+        </a>
+        <a href="/resume" class="mobile-nav-item mobile-resume-link">
+          <span>Résumé &#8599;</span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Shell -->
+  <main class="w-full flex-1 max-w-[1200px] mx-auto px-margin pt-[108px] pb-space-xl">
+    <div class="flex flex-col w-full">
+
+      <!-- Editorial Page Header -->
+      <section class="flex flex-col gap-space-sm pt-space-md pb-space-lg max-w-3xl">
+        <div class="flex items-center gap-space-xs">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+          <span
+            class="font-label-sm text-label-sm uppercase tracking-wider text-primary-container font-semibold">Writing</span>
+        </div>
+        <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-semibold">
+          Articles <span class="font-serif italic font-normal text-primary-container">&amp;</span> Notes<span
+            class="text-primary-container">.</span>
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          Thoughts and practical lessons on AI engineering, LLM systems, backend development, and building useful
+          software.
+        </p>
+      </section>
+
+      <!-- Control & Filter Deck -->
+      <section class="flex flex-col md:flex-row md:items-center justify-between gap-space-md py-space-sm mb-space-lg">
+        <!-- Topic Filter Pills -->
+        <div aria-label="Article categories" class="flex flex-wrap items-center gap-space-xs" id="topic-filters"
+          role="tablist">
+          <button aria-selected="true"
+            class="filter-pill font-label-md text-label-md px-space-md py-1.5 rounded-full transition-all duration-150 bg-inverse-surface text-inverse-on-surface shadow-sm"
+            data-filter="all" role="tab" type="button">
+            All <span class="font-label-sm text-label-sm opacity-80">(6)</span>
+          </button>
+          <button aria-selected="false"
+            class="filter-pill font-label-md text-label-md px-space-md py-1.5 rounded-full transition-all duration-150 bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high"
+            data-filter="rag-agents" role="tab" type="button">
+            RAG &amp; Agents <span class="font-label-sm text-label-sm opacity-70">(2)</span>
+          </button>
+          <button aria-selected="false"
+            class="filter-pill font-label-md text-label-md px-space-md py-1.5 rounded-full transition-all duration-150 bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high"
+            data-filter="llm-inference" role="tab" type="button">
+            LLM Inference <span class="font-label-sm text-label-sm opacity-70">(1)</span>
+          </button>
+          <button aria-selected="false"
+            class="filter-pill font-label-md text-label-md px-space-md py-1.5 rounded-full transition-all duration-150 bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high"
+            data-filter="ai-engineering" role="tab" type="button">
+            AI Engineering <span class="font-label-sm text-label-sm opacity-70">(1)</span>
+          </button>
+          <button aria-selected="false"
+            class="filter-pill font-label-md text-label-md px-space-md py-1.5 rounded-full transition-all duration-150 bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high"
+            data-filter="backend" role="tab" type="button">
+            Backend <span class="font-label-sm text-label-sm opacity-70">(1)</span>
+          </button>
+          <button aria-selected="false"
+            class="filter-pill font-label-md text-label-md px-space-md py-1.5 rounded-full transition-all duration-150 bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high"
+            data-filter="deployment" role="tab" type="button">
+            Deployment <span class="font-label-sm text-label-sm opacity-70">(1)</span>
+          </button>
+        </div>
+
+        <!-- UI State Simulation Switcher -->
+        <div
+          class="flex items-center gap-space-xs self-start md:self-auto bg-surface-container-low px-space-xs py-1 rounded-lg border border-outline-variant">
+          <span class="font-label-sm text-label-sm text-outline px-1.5 uppercase tracking-wider">Preview:</span>
+          <button
+            class="state-toggle font-label-sm text-label-sm px-space-sm py-1 rounded bg-surface-container-lowest text-on-surface shadow-sm font-medium transition-all"
+            id="btn-state-normal" title="View populated articles list" type="button">
+            Normal
+          </button>
+          <button
+            class="state-toggle font-label-sm text-label-sm px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface transition-all"
+            id="btn-state-no-match" title="Simulate zero filtered search results" type="button">
+            No Matches
+          </button>
+          <button
+            class="state-toggle font-label-sm text-label-sm px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface transition-all"
+            id="btn-state-empty" title="Simulate brand-new empty collection" type="button">
+            Empty
+          </button>
+        </div>
+      </section>
+
+      <!-- Main Articles Feed Area -->
+      <div class="flex flex-col gap-space-lg transition-opacity duration-200" id="articles-container">
+
+        <!-- FEATURED ARTICLE SPOTLIGHT: Betopia AI Agentic Search Engine -->
+        <article
+          class="article-item group relative bg-surface-container-lowest border border-outline-variant rounded-2xl p-space-lg shadow-sm hover:shadow-md hover:border-primary-container/40 transition-all duration-200 overflow-hidden"
+          data-category="rag-agents">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+
+            <!-- Left Visual: Official Technical Architecture Diagram -->
+            <div
+              class="lg:col-span-5 bg-surface-container-low rounded-xl overflow-hidden relative min-h-[240px] flex flex-col justify-between border border-outline-variant/60">
+              <!-- Header Schematic Telemetry -->
+              <div
+                class="flex items-center justify-between font-label-sm text-label-sm text-outline px-4 pt-3 z-10 bg-gradient-to-b from-black/40 to-transparent">
+                <span class="tracking-wide text-white/90">EVIDENCE PIPELINE // RRF</span>
+                <span class="flex items-center gap-1 font-mono text-emerald-400 font-medium">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                  Verified Grounded
+                </span>
+              </div>
+
+              <!-- Real Architecture Diagram Cover Image -->
+              <div class="relative w-full h-full min-h-[190px] flex items-center justify-center overflow-hidden">
+                <img src="../assets/betopia-search-cover.jpg"
+                  alt="Building Betopia AI's Agentic Search Engine architecture diagram"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy">
+              </div>
+
+              <!-- Bottom Metric Ribbons -->
+              <div
+                class="flex items-center justify-between font-label-sm text-label-sm bg-surface-container-highest/80 backdrop-blur px-3 py-1.5 text-on-surface-variant border-t border-outline-variant/50">
+                <span>Passage Retrieval: <strong class="text-on-surface font-mono">In-Memory BM25</strong></span>
+                <span>Latency: <strong class="text-primary-container font-mono">&lt; 280ms</strong></span>
+              </div>
+            </div>
+
+            <!-- Right Content & Actions -->
+            <div class="lg:col-span-7 flex flex-col justify-between gap-space-md">
+              <div class="flex flex-col gap-space-xs">
+                <!-- Topic Badge & Type -->
+                <div class="flex items-center gap-space-xs flex-wrap">
+                  <span
+                    class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-primary-container bg-primary-fixed px-2.5 py-0.5 rounded-full border border-primary-container/20">
+                    RAG &amp; AGENTS • FEATURED
+                  </span>
+                  <span class="font-label-sm text-label-sm text-outline">•</span>
+                  <span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Production
+                    Architecture</span>
+                </div>
+
+                <!-- Title -->
+                <h2
+                  class="font-headline-md text-headline-md text-on-surface font-semibold tracking-tight group-hover:text-primary-container transition-colors duration-150 mt-1">
+                  <a class="focus:outline-none focus:underline"
+                    href="https://www.linkedin.com/pulse/building-betopia-ais-agentic-search-engine-from-web-research-rahman-6wyfc/"
+                    rel="noopener noreferrer" target="_blank">
+                    Building Betopia AI’s Agentic Search Engine: From Web Search to Evidence-Grounded Research
+                  </a>
+                </h2>
+
+                <!-- Excerpt -->
+                <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed mt-1">
+                  When you build web search for an LLM assistant, the first prototype takes an afternoon. The real
+                  engineering begins when handling multi-provider fallbacks, Reciprocal Rank Fusion (RRF), in-memory
+                  BM25 retrieval, and verified citation evidence pipelines.
+                </p>
+              </div>
+
+              <!-- Footer Metadata and Action Links -->
+              <div
+                class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pt-space-sm mt-space-xs border-t border-outline-variant/60">
+                <!-- Metadata Cluster -->
+                <div
+                  class="flex items-center flex-wrap gap-x-space-sm gap-y-1 font-label-sm text-label-sm text-outline">
+                  <span class="inline-flex items-center gap-1.5 text-on-surface font-medium">
+                    <span
+                      class="w-4 h-4 rounded bg-[#0A66C2] text-white flex items-center justify-center text-[10px] font-bold">in</span>
+                    LinkedIn Article
+                  </span>
+                  <span>•</span>
+                  <time datetime="2026-09-10">September 10, 2026</time>
+                  <span>•</span>
+                  <span>8 min read</span>
+                </div>
+
+                <!-- Action Cluster -->
+                <div class="flex items-center gap-space-md shrink-0">
+                  <a class="inline-flex items-center gap-1.5 font-label-md text-label-md bg-inverse-surface text-inverse-on-surface hover:bg-primary-container px-space-md py-2 rounded-lg font-medium transition-all group/btn shadow-sm"
+                    href="https://www.linkedin.com/pulse/building-betopia-ais-agentic-search-engine-from-web-research-rahman-6wyfc/"
+                    rel="noopener noreferrer" target="_blank">
+                    <span>Read on LinkedIn</span>
+                    <span
+                      class="inline-block transition-transform duration-150 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5">&#8599;</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </article>
+
+        <!-- ARTICLE COLLECTION: 2-COLUMN BESPOKE GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md" id="articles-grid">
+
+          <!-- Article Card 1 -->
+          <article
+            class="article-item group bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm hover:shadow-md hover:border-primary-container/40 transition-all duration-150 flex flex-col justify-between"
+            data-category="rag-agents">
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-center justify-between gap-space-xs">
+                <span
+                  class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-secondary-container bg-secondary-fixed px-2 py-0.5 rounded">
+                  RAG &amp; AGENTS
+                </span>
+                <span class="font-label-sm text-label-sm text-outline">6 min read</span>
+              </div>
+              <h3
+                class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight group-hover:text-primary-container transition-colors duration-150 mt-1">
+                <a class="focus:outline-none focus:underline" href="https://www.linkedin.com/in/md-abdurrahman770"
+                  rel="noopener noreferrer" target="_blank">
+                  Building Stateful Multi-Agent Runtimes with LangGraph and Human-in-the-Loop Safeguards
+                </a>
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed line-clamp-3 mt-1">
+                Patterns for managing state checkpoints, deterministic tool invocations via Model Context Protocol
+                (MCP), and asynchronous human-in-the-loop review nodes in critical workflows.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-space-md mt-space-md border-t border-outline-variant/60">
+              <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline">
+                <span class="font-medium text-on-surface">LinkedIn Note</span>
+                <span>•</span>
+                <time datetime="2026-01-18">Jan 18, 2026</time>
+              </div>
+              <a class="inline-flex items-center gap-0.5 font-label-md text-label-md text-primary-container font-medium hover:text-primary transition-colors group/link"
+                href="https://www.linkedin.com/in/md-abdurrahman770" rel="noopener noreferrer" target="_blank">
+                <span>Read on LinkedIn</span>
+                <span
+                  class="inline-block transition-transform duration-150 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article Card 2 -->
+          <article
+            class="article-item group bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm hover:shadow-md hover:border-primary-container/40 transition-all duration-150 flex flex-col justify-between"
+            data-category="llm-inference">
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-center justify-between gap-space-xs">
+                <span
+                  class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-primary-container bg-primary-fixed px-2 py-0.5 rounded">
+                  LLM INFERENCE
+                </span>
+                <span class="font-label-sm text-label-sm text-outline">8 min read</span>
+              </div>
+              <h3
+                class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight group-hover:text-primary-container transition-colors duration-150 mt-1">
+                <a class="focus:outline-none focus:underline" href="https://www.linkedin.com/in/md-abdurrahman770"
+                  rel="noopener noreferrer" target="_blank">
+                  Optimizing vLLM PagedAttention &amp; Continuous Batching in High-Concurrency Environments
+                </a>
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed line-clamp-3 mt-1">
+                A deep dive into reducing P95 TTFT under 280ms on self-hosted vLLM clusters. Practical benchmarks on
+                KV-cache memory reclamation, tensor parallelism, and quantized AWQ weights for enterprise production
+                workloads.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-space-md mt-space-md border-t border-outline-variant/60">
+              <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline">
+                <span class="font-medium text-on-surface">Technical Note</span>
+                <span>•</span>
+                <time datetime="2026-02-24">Feb 24, 2026</time>
+              </div>
+              <a class="inline-flex items-center gap-0.5 font-label-md text-label-md text-primary-container font-medium hover:text-primary transition-colors group/link"
+                href="https://www.linkedin.com/in/md-abdurrahman770" rel="noopener noreferrer" target="_blank">
+                <span>Read Note</span>
+                <span
+                  class="inline-block transition-transform duration-150 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article Card 3 -->
+          <article
+            class="article-item group bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm hover:shadow-md hover:border-primary-container/40 transition-all duration-150 flex flex-col justify-between"
+            data-category="backend">
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-center justify-between gap-space-xs">
+                <span
+                  class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-on-surface bg-surface-container-high px-2 py-0.5 rounded">
+                  BACKEND
+                </span>
+                <span class="font-label-sm text-label-sm text-outline">4 min read</span>
+              </div>
+              <h3
+                class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight group-hover:text-primary-container transition-colors duration-150 mt-1">
+                <a class="focus:outline-none focus:underline" href="https://www.linkedin.com/in/md-abdurrahman770"
+                  rel="noopener noreferrer" target="_blank">
+                  High-Throughput Streaming in FastAPI: Server-Sent Events (SSE) for LLM Token Streams
+                </a>
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed line-clamp-3 mt-1">
+                Architecting zero-buffering async microservices in Python 3.12, handling client disconnects, and
+                tracking token latency with custom telemetry middleware.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-space-md mt-space-md border-t border-outline-variant/60">
+              <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline">
+                <span class="font-medium text-on-surface">LinkedIn Post</span>
+                <span>•</span>
+                <time datetime="2025-11-29">Nov 29, 2025</time>
+              </div>
+              <a class="inline-flex items-center gap-0.5 font-label-md text-label-md text-primary-container font-medium hover:text-primary transition-colors group/link"
+                href="https://www.linkedin.com/in/md-abdurrahman770" rel="noopener noreferrer" target="_blank">
+                <span>Read on LinkedIn</span>
+                <span
+                  class="inline-block transition-transform duration-150 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article Card 4 -->
+          <article
+            class="article-item group bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm hover:shadow-md hover:border-primary-container/40 transition-all duration-150 flex flex-col justify-between"
+            data-category="deployment">
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-center justify-between gap-space-xs">
+                <span
+                  class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-tertiary bg-tertiary-fixed px-2 py-0.5 rounded">
+                  DEPLOYMENT
+                </span>
+                <span class="font-label-sm text-label-sm text-outline">5 min read</span>
+              </div>
+              <h3
+                class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight group-hover:text-primary-container transition-colors duration-150 mt-1">
+                <a class="focus:outline-none focus:underline" href="https://www.linkedin.com/in/md-abdurrahman770"
+                  rel="noopener noreferrer" target="_blank">
+                  Zero-Downtime Containerized GPU Orchestration with Docker and CUDA Runtime Isolation
+                </a>
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed line-clamp-3 mt-1">
+                Packaging high-memory PyTorch services, isolating CUDA drivers, and orchestrating bare-metal Linux
+                workers with automated health check fallbacks.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-space-md mt-space-md border-t border-outline-variant/60">
+              <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline">
+                <span class="font-medium text-on-surface">Infrastructure Note</span>
+                <span>•</span>
+                <time datetime="2025-10-15">Oct 15, 2025</time>
+              </div>
+              <a class="inline-flex items-center gap-0.5 font-label-md text-label-md text-primary-container font-medium hover:text-primary transition-colors group/link"
+                href="https://www.linkedin.com/in/md-abdurrahman770" rel="noopener noreferrer" target="_blank">
+                <span>Read Note</span>
+                <span
+                  class="inline-block transition-transform duration-150 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Article Card 5 -->
+          <article
+            class="article-item group bg-surface-container-lowest border border-outline-variant rounded-xl p-space-lg shadow-sm hover:shadow-md hover:border-primary-container/40 transition-all duration-150 flex flex-col justify-between md:col-span-2"
+            data-category="ai-engineering">
+            <div class="flex flex-col gap-space-xs">
+              <div class="flex items-center justify-between gap-space-xs">
+                <span
+                  class="font-label-sm text-label-sm tracking-wider uppercase font-semibold text-primary-container bg-primary-fixed px-2 py-0.5 rounded">
+                  AI ENGINEERING • RESEARCH NOTE
+                </span>
+                <span class="font-label-sm text-label-sm text-outline">10 min read</span>
+              </div>
+              <h3
+                class="font-headline-sm text-headline-sm text-on-surface font-semibold tracking-tight group-hover:text-primary-container transition-colors duration-150 mt-1 max-w-3xl">
+                <a class="focus:outline-none focus:underline" href="https://www.linkedin.com/in/md-abdurrahman770"
+                  rel="noopener noreferrer" target="_blank">
+                  Low-Resource NLP Fine-Tuning: Parameter-Efficient LoRA on Bangla Domain Datasets
+                </a>
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-4xl mt-1">
+                Methods and quantitative benchmarks from our peer-reviewed IEEE research on clinical signal and
+                low-resource multilingual tokenization under compute constraints.
+              </p>
+            </div>
+            <div class="flex items-center justify-between pt-space-md mt-space-md border-t border-outline-variant/60">
+              <div class="flex items-center gap-space-xs font-label-sm text-label-sm text-outline">
+                <span class="font-medium text-on-surface">IEEE / Academic Research</span>
+                <span>•</span>
+                <time datetime="2025-09-04">Sep 04, 2025</time>
+              </div>
+              <a class="inline-flex items-center gap-0.5 font-label-md text-label-md text-primary-container font-medium hover:text-primary transition-colors group/link"
+                href="https://www.linkedin.com/in/md-abdurrahman770" rel="noopener noreferrer" target="_blank">
+                <span>Read Research Note</span>
+                <span
+                  class="inline-block transition-transform duration-150 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5">&#8599;</span>
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+
+      <!-- STATE A: FILTER WITH NO MATCHES CONTAINER -->
+      <div
+        class="hidden flex-col items-center justify-center text-center py-space-xl px-space-md bg-surface-container-lowest border border-outline-variant rounded-2xl my-space-md shadow-sm"
+        id="state-no-match-box">
+        <div
+          class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-outline mb-space-sm">
+          <span class="material-symbols-outlined text-[24px]">filter_list_off</span>
+        </div>
+        <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">No articles match this topic yet
+        </h3>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-md mt-1 mb-space-md">
+          There are currently no published notes under this specific classification. Try selecting another topic or
+          reset the filter.
+        </p>
+        <button
+          class="font-label-md text-label-md px-space-md py-2 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors font-medium border border-outline-variant"
+          id="btn-reset-filters" type="button">
+          Clear filters &amp; view all
+        </button>
+      </div>
+
+      <!-- STATE B: EMPTY COLLECTION STATE -->
+      <div
+        class="hidden flex-col items-center justify-center text-center py-space-xl px-space-md bg-surface-container-lowest border border-outline-variant rounded-2xl my-space-md shadow-sm"
+        id="state-empty-collection-box">
+        <div
+          class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary-container mb-space-sm">
+          <span class="material-symbols-outlined text-[24px]">edit_note</span>
+        </div>
+        <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Writing is on the way</h3>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-lg mt-1 mb-space-md">
+          Writing is on the way. I'll share articles and practical notes from my engineering work here. Check back soon
+          or follow updates on external platforms.
+        </p>
+        <div class="flex items-center gap-space-sm">
+          <a class="font-label-md text-label-md px-space-md py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors border border-outline-variant"
+            href="https://github.com/Arprovat" target="_blank" rel="noopener noreferrer">
+            GitHub &#8599;
+          </a>
+          <a class="font-label-md text-label-md px-space-md py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high transition-colors border border-outline-variant"
+            href="https://www.linkedin.com/in/md-abdurrahman770" target="_blank" rel="noopener noreferrer">
+            LinkedIn &#8599;
+          </a>
+        </div>
+      </div>
+
+      <!-- Technical Research & Newsletter Callout Bar -->
+      <section
+        class="mt-space-xl bg-surface-container-low border border-outline-variant rounded-2xl p-space-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md shadow-sm">
+        <div class="flex flex-col gap-1 max-w-xl">
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-primary-container">rss_feed</span>
+            <span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface">Syndication
+              &amp; Collaboration</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            Interested in co-authoring or technical reviews on LLM inference, synthetic data architectures, or agentic
+            runtimes? Reach out directly.
+          </p>
+        </div>
+        <a class="inline-flex items-center gap-space-xs font-label-md text-label-md bg-surface-container-lowest text-on-surface hover:bg-surface-container-high px-space-md py-2 rounded-lg transition-colors shrink-0 shadow-sm border border-outline-variant"
+          href="mailto:provatar0@gmail.com">
+          <span class="material-symbols-outlined text-[16px] text-primary-container">mail</span>
+          <span>Propose a Topic</span>
+        </a>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Interactive JavaScript Filter & Preview Engine -->
+  <script>
+    (function () {
+      const filterPills = document.querySelectorAll('.filter-pill');
+      const articleItems = document.querySelectorAll('.article-item');
+      const articlesContainer = document.getElementById('articles-container');
+      const noMatchBox = document.getElementById('state-no-match-box');
+      const emptyCollectionBox = document.getElementById('state-empty-collection-box');
+      const resetBtn = document.getElementById('btn-reset-filters');
+
+      const btnNormal = document.getElementById('btn-state-normal');
+      const btnNoMatch = document.getElementById('btn-state-no-match');
+      const btnEmpty = document.getElementById('btn-state-empty');
+      const stateToggles = document.querySelectorAll('.state-toggle');
+
+      function applyFilter(category) {
+        articlesContainer.style.opacity = '0.35';
+
+        setTimeout(() => {
+          let matchCount = 0;
+
+          articleItems.forEach(item => {
+            const itemCategory = item.getAttribute('data-category');
+            if (category === 'all' || itemCategory === category) {
+              item.classList.remove('hidden');
+              matchCount++;
+            } else {
+              item.classList.add('hidden');
+            }
+          });
+
+          if (matchCount === 0) {
+            articlesContainer.classList.add('hidden');
+            noMatchBox.classList.remove('hidden');
+            noMatchBox.classList.add('flex');
+            emptyCollectionBox.classList.add('hidden');
+          } else {
+            articlesContainer.classList.remove('hidden');
+            noMatchBox.classList.add('hidden');
+            noMatchBox.classList.remove('flex');
+            emptyCollectionBox.classList.add('hidden');
+          }
+
+          articlesContainer.style.opacity = '1';
+        }, 80);
+
+        filterPills.forEach(pill => {
+          const isMatch = pill.getAttribute('data-filter') === category;
+          pill.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+          if (isMatch) {
+            pill.className = 'filter-pill font-label-md text-label-md px-space-md py-1.5 rounded-full transition-all duration-150 bg-inverse-surface text-inverse-on-surface shadow-sm';
+          } else {
+            pill.className = 'filter-pill font-label-md text-label-md px-space-md py-1.5 rounded-full transition-all duration-150 bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high border border-outline-variant/60';
+          }
+        });
+      }
+
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          updateStateToggle(btnNormal);
+          applyFilter(pill.getAttribute('data-filter'));
+        });
+      });
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          updateStateToggle(btnNormal);
+          applyFilter('all');
+        });
+      }
+
+      function updateStateToggle(activeBtn) {
+        stateToggles.forEach(btn => {
+          if (btn === activeBtn) {
+            btn.className = 'state-toggle font-label-sm text-label-sm px-space-sm py-1 rounded bg-surface-container-lowest text-on-surface shadow-sm font-medium transition-all';
+          } else {
+            btn.className = 'state-toggle font-label-sm text-label-sm px-space-sm py-1 rounded text-on-surface-variant hover:text-on-surface transition-all';
+          }
+        });
+      }
+
+      if (btnNormal) {
+        btnNormal.addEventListener('click', () => {
+          updateStateToggle(btnNormal);
+          articlesContainer.classList.remove('hidden');
+          articlesContainer.style.opacity = '1';
+          noMatchBox.classList.add('hidden');
+          noMatchBox.classList.remove('flex');
+          emptyCollectionBox.classList.add('hidden');
+          emptyCollectionBox.classList.remove('flex');
+          applyFilter('all');
+        });
+      }
+
+      if (btnNoMatch) {
+        btnNoMatch.addEventListener('click', () => {
+          updateStateToggle(btnNoMatch);
+          articlesContainer.classList.add('hidden');
+          noMatchBox.classList.remove('hidden');
+          noMatchBox.classList.add('flex');
+          emptyCollectionBox.classList.add('hidden');
+          emptyCollectionBox.classList.remove('flex');
+        });
+      }
+
+      if (btnEmpty) {
+        btnEmpty.addEventListener('click', () => {
+          updateStateToggle(btnEmpty);
+          articlesContainer.classList.add('hidden');
+          noMatchBox.classList.add('hidden');
+          noMatchBox.classList.remove('flex');
+          emptyCollectionBox.classList.remove('hidden');
+          emptyCollectionBox.classList.add('flex');
+        });
+      }
+    })();
+    // Desktop Nav Capsule Controller for Writing Page
+    (function initWritingNav() {
+      const header = document.getElementById('site-header');
+      const desktopNav = document.getElementById('desktop-nav');
+      const activePill = document.getElementById('nav-active-pill');
+      const spotlight = document.getElementById('nav-spotlight');
+      const writingLink = document.querySelector('#desktop-nav .nav-item[data-section="writing"]');
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileNavPanel = document.getElementById('mobile-nav-panel');
+      const iconMenuBars = document.getElementById('icon-menu-bars');
+      const iconMenuClose = document.getElementById('icon-menu-close');
+
+      function updatePill(targetLink, immediate = false) {
+        if (!desktopNav || !activePill || !targetLink) return;
+        const navRect = desktopNav.getBoundingClientRect();
+        const linkRect = targetLink.getBoundingClientRect();
+        if (linkRect.width === 0 || linkRect.height === 0) return;
+
+        const left = linkRect.left - navRect.left - (desktopNav.clientLeft || 0);
+        const top = linkRect.top - navRect.top - (desktopNav.clientTop || 0);
+
+        if (immediate) {
+          activePill.style.transition = 'none';
+          activePill.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+          activePill.style.width = `${linkRect.width}px`;
+          activePill.style.height = `${linkRect.height}px`;
+          activePill.style.opacity = '1';
+          void activePill.offsetWidth;
+          activePill.style.transition = '';
+        } else {
+          activePill.style.transform = `translate3d(${left}px, ${top}px, 0)`;
+          activePill.style.width = `${linkRect.width}px`;
+          activePill.style.height = `${linkRect.height}px`;
+          activePill.style.opacity = '1';
+        }
+      }
+
+      // Initialize pill over Writing link
+      if (writingLink) {
+        setTimeout(() => updatePill(writingLink, true), 50);
+        setTimeout(() => updatePill(writingLink, true), 300);
+        window.addEventListener('resize', () => updatePill(writingLink, true));
+      }
+
+      // Nav Spotlight
+      if (desktopNav && spotlight) {
+        desktopNav.addEventListener('pointermove', (e) => {
+          const rect = desktopNav.getBoundingClientRect();
+          desktopNav.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          desktopNav.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+          spotlight.style.opacity = '1';
+        });
+        desktopNav.addEventListener('pointerleave', () => {
+          spotlight.style.opacity = '0';
+          updatePill(writingLink);
+        });
+      }
+
+      // Hover effect on other links moves pill smoothly
+      const allLinks = document.querySelectorAll('#desktop-nav .nav-item');
+      allLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => updatePill(link));
+        link.addEventListener('mouseleave', () => updatePill(writingLink));
+      });
+
+      // Header scroll state
+      window.addEventListener('scroll', () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        if (scrollY > 30) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }, { passive: true });
+
+      // Mobile menu toggle
+      if (mobileMenuBtn && mobileNavPanel) {
+        mobileMenuBtn.addEventListener('click', () => {
+          const isOpen = mobileNavPanel.classList.toggle('is-open');
+          mobileMenuBtn.setAttribute('aria-expanded', isOpen);
+          if (iconMenuBars && iconMenuClose) {
+            iconMenuBars.classList.toggle('hidden', isOpen);
+            iconMenuClose.classList.toggle('hidden', !isOpen);
+          }
+        });
+        document.addEventListener('click', (e) => {
+          if (!mobileNavPanel.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+            mobileNavPanel.classList.remove('is-open');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            if (iconMenuBars && iconMenuClose) {
+              iconMenuBars.classList.remove('hidden');
+              iconMenuClose.classList.add('hidden');
+            }
+          }
+        });
+      }
+    })();
+
+  </script>
+
+  <!-- Editorial Footer -->
+  <footer class="w-full bg-[#FAF7F2] border-t border-outline-variant mt-auto">
+    <div
+      class="max-w-[1200px] mx-auto px-margin py-space-lg flex flex-col gap-space-lg font-body-sm text-body-sm text-on-surface-variant">
+      <div
+        class="flex flex-col md:flex-row items-start md:items-center justify-between gap-space-md border-b border-outline-variant pb-space-md">
+        <nav class="flex flex-wrap items-center gap-x-space-lg gap-y-space-xs">
+          <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+            href="/#home">Home</a>
+          <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+            href="/#work">Work</a>
+          <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+            href="/#expertise">Expertise</a>
+          <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+            href="/#experience">Experience</a>
+          <a class="font-body-sm text-body-sm text-primary-container font-medium" href="/writing">Writing</a>
+          <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+            href="/#about">About</a>
+          <a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors"
+            href="/#contact">Contact</a>
+        </nav>
+        <a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-space-xs shrink-0"
+          href="#">Back to top &#8593;</a>
+      </div>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-space-md">
+        <div class="flex flex-wrap items-center gap-space-sm">
+          <span class="font-medium text-on-surface">Md. Abdur Rahman</span>
+          <span class="text-outline-variant">&bull;</span>
+          <span class="font-label-sm text-label-sm text-on-surface-variant">Dhaka, Bangladesh</span>
+          <span class="text-outline-variant">&bull;</span>
+          <span>&copy; 2026. All rights reserved.</span>
+        </div>
+        <div class="flex items-center gap-space-lg">
+          <span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">AI Systems &amp; Neural
+            Architecture</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>

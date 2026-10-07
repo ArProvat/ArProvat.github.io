@@ -1,0 +1,142 @@
+[
+  {
+    "id": "betopia-ai",
+    "category": "AI PLATFORM · AGENT SYSTEMS",
+    "index": "NODE 01",
+    "title": "Betopia AI",
+    "desc": "An internal AI ecosystem spanning an LLM API gateway, agentic harness web chat, a coding-agent CLI, and an IDE extension.",
+    "contrib": "Built agent workflows, context assembly, retrieval, tool calling, and self-hosted inference infrastructure.",
+    "highlights": [
+      "LangGraph agent runtime with explicit state checkpoints",
+      "Dynamic context assembled from project schema, repo tree & session",
+      "Self-hosted low-latency inference with vLLM engine"
+    ],
+    "tags": [
+      "Python",
+      "LangGraph",
+      "vLLM",
+      "FastAPI"
+    ],
+    "status": "STATUS: DEPLOYED",
+    "metaLeft": "Audience: 700+ Employees",
+    "metaRight": "Inference: Blackwell 96GB GPU",
+    "featured": true
+  },
+  {
+    "id": "firecomm-ai",
+    "category": "ENTERPRISE AI · RETRIEVAL",
+    "index": "NODE 02",
+    "title": "Firecomm AI",
+    "desc": "A role-aware agentic RAG platform designed for 2,200+ enterprise users, with cited answers over 500+ operational documents.",
+    "contrib": "Implemented access-scoped vector filtering, multi-query expansion, BM25 indexing, and strict citation enforcement.",
+    "highlights": [
+      "Access-scoped retrieval respecting departmental permissions",
+      "Dense and BM25 hybrid search with reciprocal rank fusion",
+      "Grounded answers with direct page-level citations & confidence scores"
+    ],
+    "tags": [
+      "RAG",
+      "Hybrid Search",
+      "Access Control",
+      "FastAPI"
+    ],
+    "status": "STATUS: PRODUCTION LIVE",
+    "metaLeft": "Audience: 2,200+ Users",
+    "metaRight": "Corpus: 500+ Technical Specs",
+    "featured": true
+  },
+  {
+    "id": "lawyer-ai",
+    "category": "MULTI-AGENT APPLICATION · LEGAL TECH",
+    "index": "NODE 03",
+    "title": "Lawyer.AI",
+    "desc": "A legal-domain chatbot combining document retrieval, multi-agent workflows, and citation-aware responses.",
+    "contrib": "Designed hierarchical legal reasoning graphs with specialized statutory and case precedent analyzers.",
+    "highlights": [
+      "Dense & sparse retrieval over statutory codes & judgments",
+      "Cross-encoder reranking to ensure case relevance",
+      "Persistent multi-turn conversation state with checkpointing"
+    ],
+    "tags": [
+      "Python",
+      "LangGraph",
+      "ChromaDB",
+      "FastAPI"
+    ],
+    "status": "STATUS: COMPLETED",
+    "metaLeft": "Domain: Penal & Civil Law",
+    "metaRight": "Index: ChromaDB Vector Store",
+    "featured": true
+  },
+  {
+    "id": "grpo-rlhf",
+    "category": "REINFORCEMENT LEARNING · FINE-TUNING",
+    "index": "NODE 04",
+    "title": "GRPO Reinforcement-Learning Fine-Tuning",
+    "desc": "Applied Group Relative Policy Optimisation (GRPO) to align model outputs with reward signals, going beyond supervised fine-tuning toward human-preference alignment.",
+    "contrib": "Implemented a full RLHF training loop in Hugging Face TRL, including reward modelling and policy-gradient optimisation.",
+    "highlights": [
+      "Applied GRPO reward alignment",
+      "Full RLHF training loop with Hugging Face TRL",
+      "Improved reasoning and instruction-following performance"
+    ],
+    "tags": [
+      "Python",
+      "Hugging Face TRL",
+      "GRPO",
+      "RLHF",
+      "Transformers"
+    ],
+    "status": "STATUS: COMPLETED",
+    "metaLeft": "Framework: TRL / Transformers",
+    "metaRight": "Method: GRPO Alignment",
+    "featured": false
+  },
+  {
+    "id": "bangla-bert-hate-speech",
+    "category": "NLP · FINE-TUNING",
+    "index": "NODE 05",
+    "title": "Bangla Hate-Speech Classifier",
+    "desc": "Fine-tuned BanglaBERT with LoRA/QLoRA (PEFT) adapters for multi-class hate-speech detection, reaching 72% accuracy.",
+    "contrib": "Reduced GPU memory footprint by ~60% via 4-bit quantisation (QLoRA) enabling fine-tuning on consumer hardware.",
+    "highlights": [
+      "72% accuracy on multi-class classification",
+      "60% memory reduction with 4-bit QLoRA",
+      "Targeted text normalisation and data balancing"
+    ],
+    "tags": [
+      "Python",
+      "Hugging Face",
+      "PEFT",
+      "LoRA",
+      "BanglaBERT"
+    ],
+    "status": "STATUS: COMPLETED",
+    "metaLeft": "Accuracy: 72%",
+    "metaRight": "Quantization: 4-bit QLoRA",
+    "featured": false
+  },
+  {
+    "id": "mcp-expense-tracker",
+    "category": "MODEL CONTEXT PROTOCOL · BACKEND",
+    "index": "NODE 06",
+    "title": "Expense Tracker – MCP Server",
+    "desc": "Built a natural-language personal-finance tracker that bridges Claude tool-use to a PostgreSQL backend over the Model Context Protocol (MCP).",
+    "contrib": "Engineered multi-user schema with FastMCP tools for seamless conversational transaction logging and budget analysis.",
+    "highlights": [
+      "Direct Claude AI integration via Model Context Protocol",
+      "PostgreSQL backend with parameterized safe queries",
+      "Natural-language query and expense analytics"
+    ],
+    "tags": [
+      "PostgreSQL",
+      "FastMCP",
+      "Claude AI",
+      "MCP"
+    ],
+    "status": "STATUS: COMPLETED",
+    "metaLeft": "Protocol: Model Context Protocol",
+    "metaRight": "Database: PostgreSQL",
+    "featured": false
+  }
+]

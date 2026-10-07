@@ -1,0 +1,20 @@
+{
+  "name": "Md. Abdur Rahman",
+  "title": "AI Engineer",
+  "subtitle": "Engineering AI. Building useful systems.",
+  "spec": "LLM systems · Inference · Backend engineering",
+  "heroDescription": "I build LLM applications, inference infrastructure, and backend services that turn models into working products.",
+  "location": "Mirpur 10, Dhaka, Bangladesh",
+  "phone": "+880 1611339411",
+  "email": "provatar0@gmail.com",
+  "links": {
+    "github": "https://github.com/Arprovat",
+    "linkedin": "https://www.linkedin.com/in/md-abdurrahman770"
+  },
+  "currentRole": {
+    "title": "AI Engineer",
+    "company": "Betopia Limited",
+    "badge": "Betopia AI Champion · 2026",
+    "period": "Mar 2026 – Present"
+  }
+}

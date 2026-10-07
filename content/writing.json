@@ -1,0 +1,92 @@
+[
+  {
+    "id": "betopia-agentic-search",
+    "slug": "betopia-agentic-search",
+    "title": "Building Betopia AI’s Agentic Search Engine: From Web Search to Evidence-Grounded Research",
+    "category": "rag-agents",
+    "categoryLabel": "RAG & AGENTS",
+    "typeLabel": "Production Architecture",
+    "featured": true,
+    "date": "2026-09-10",
+    "dateFormatted": "September 10, 2026",
+    "readTime": "8 min read",
+    "platform": "LinkedIn Article",
+    "url": "https://www.linkedin.com/pulse/building-betopia-ais-agentic-search-engine-from-web-research-rahman-6wyfc/",
+    "coverImage": "../assets/betopia-search-cover.jpg",
+    "excerpt": "When you build web search for an LLM assistant, the first prototype takes an afternoon. The real engineering begins when handling multi-provider fallbacks, Reciprocal Rank Fusion (RRF), in-memory BM25 retrieval, and verified citation evidence pipelines.",
+    "metrics": {
+      "retrieval": "In-Memory BM25",
+      "latency": "< 280ms"
+    }
+  },
+  {
+    "id": "stateful-multi-agent-langgraph",
+    "slug": "stateful-multi-agent-langgraph",
+    "title": "Building Stateful Multi-Agent Runtimes with LangGraph and Human-in-the-Loop Safeguards",
+    "category": "rag-agents",
+    "categoryLabel": "RAG & AGENTS",
+    "featured": false,
+    "date": "2026-01-18",
+    "dateFormatted": "Jan 18, 2026",
+    "readTime": "6 min read",
+    "platform": "LinkedIn Note",
+    "url": "https://www.linkedin.com/in/md-abdurrahman770",
+    "excerpt": "Patterns for managing state checkpoints, deterministic tool invocations via Model Context Protocol (MCP), and asynchronous human-in-the-loop review nodes in critical workflows."
+  },
+  {
+    "id": "optimizing-vllm-pagedattention",
+    "slug": "optimizing-vllm-pagedattention",
+    "title": "Optimizing vLLM PagedAttention & Continuous Batching in High-Concurrency Environments",
+    "category": "llm-inference",
+    "categoryLabel": "LLM INFERENCE",
+    "featured": false,
+    "date": "2026-02-24",
+    "dateFormatted": "Feb 24, 2026",
+    "readTime": "8 min read",
+    "platform": "Technical Note",
+    "url": "https://www.linkedin.com/in/md-abdurrahman770",
+    "excerpt": "A deep dive into reducing P95 TTFT under 280ms on self-hosted vLLM clusters. Practical benchmarks on KV-cache memory reclamation, tensor parallelism, and quantized AWQ weights for enterprise production workloads."
+  },
+  {
+    "id": "high-throughput-fastapi-sse",
+    "slug": "high-throughput-fastapi-sse",
+    "title": "High-Throughput Streaming in FastAPI: Server-Sent Events (SSE) for LLM Token Streams",
+    "category": "backend",
+    "categoryLabel": "BACKEND",
+    "featured": false,
+    "date": "2025-11-29",
+    "dateFormatted": "Nov 29, 2025",
+    "readTime": "4 min read",
+    "platform": "LinkedIn Post",
+    "url": "https://www.linkedin.com/in/md-abdurrahman770",
+    "excerpt": "Architecting zero-buffering async microservices in Python 3.12, handling client disconnects, and tracking token latency with custom telemetry middleware."
+  },
+  {
+    "id": "zero-downtime-containerized-gpu",
+    "slug": "zero-downtime-containerized-gpu",
+    "title": "Zero-Downtime Containerized GPU Orchestration with Docker and CUDA Runtime Isolation",
+    "category": "deployment",
+    "categoryLabel": "DEPLOYMENT",
+    "featured": false,
+    "date": "2025-10-15",
+    "dateFormatted": "Oct 15, 2025",
+    "readTime": "5 min read",
+    "platform": "Infrastructure Note",
+    "url": "https://www.linkedin.com/in/md-abdurrahman770",
+    "excerpt": "Packaging high-memory PyTorch services, isolating CUDA drivers, and orchestrating bare-metal Linux workers with automated health check fallbacks."
+  },
+  {
+    "id": "low-resource-nlp-lora-bangla",
+    "slug": "low-resource-nlp-lora-bangla",
+    "title": "Low-Resource NLP Fine-Tuning: Parameter-Efficient LoRA on Bangla Domain Datasets",
+    "category": "ai-engineering",
+    "categoryLabel": "AI ENGINEERING • RESEARCH NOTE",
+    "featured": false,
+    "date": "2025-09-04",
+    "dateFormatted": "Sep 04, 2025",
+    "readTime": "10 min read",
+    "platform": "IEEE / Academic Research",
+    "url": "https://www.linkedin.com/in/md-abdurrahman770",
+    "excerpt": "Methods and quantitative benchmarks from our peer-reviewed IEEE research on clinical signal and low-resource multilingual tokenization under compute constraints."
+  }
+]
