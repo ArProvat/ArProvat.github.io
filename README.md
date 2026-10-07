@@ -2,7 +2,7 @@
 
 Welcome to the source code for my professional AI Engineering portfolio. This repository houses a fully custom, high-performance web portfolio featuring an interactive SVG particle hero, a dynamic writing/blog section, and an integrated **AI Admin Copilot** for seamless content management.
 
-![Portfolio Preview](assets/betopia-search-cover.jpg)
+![Portfolio Preview](assets\hero.png)
 
 ## ✨ Key Features
 
