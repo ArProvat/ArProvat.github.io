@@ -727,6 +727,85 @@
       outline: 2px solid rgba(182, 77, 50, 0.6);
       outline-offset: 3px;
     }
+
+    /* Selected work: product-story-first presentation */
+    #site-header { height: 76px; }
+    #selected-work { scroll-margin-top: 96px; }
+    .project-section-intro { max-width: 620px; margin-top: 10px; color: #675446; font-size: 16px; line-height: 1.55; }
+    .project-showcase { align-items: start; }
+    .project-tabs { grid-column: 1 / -1; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; }
+    .project-tabs > div:first-child { display: flex; align-items: center; gap: 20px; min-width: 0; }
+    .project-tabs > div:first-child > div:first-child { margin: 0; flex: 0 0 auto; }
+    .project-tabs > div:last-child { display: none; }
+    #project-nav-buttons { display: flex; gap: 8px; min-width: 0; overflow-x: auto; padding-bottom: 3px; }
+    #project-nav-buttons > :not([hidden]) ~ :not([hidden]) { margin-top: 0; }
+    .work-nav-btn { width: auto; min-width: max-content; padding: 9px 12px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; box-shadow: none; }
+    .work-nav-btn:hover, .work-nav-btn.is-active, .work-nav-btn.is-active:hover { transform: none; background: transparent; border-color: transparent; box-shadow: none; }
+    .work-nav-btn.is-active { border-bottom-color: #B64D32; color: #2A1D17; }
+    .work-nav-dot { display: none; }
+    .project-story, .project-preview-panel { padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
+    .project-preview-panel { border-left: 1px solid rgba(53, 37, 30, 0.14) !important; padding-left: clamp(24px, 3vw, 48px) !important; }
+    #project-detail-content { min-height: 460px; transition: opacity 180ms ease, transform 180ms ease; }
+    #project-diagram { min-height: 0; margin: 18px 0 0; transition: opacity 180ms ease, transform 180ms ease; }
+    #project-detail-content.is-switching, #project-diagram.is-switching { opacity: 0.45; transform: translateY(4px); }
+    #proj-desc, #proj-contrib, #proj-highlights { color: #4D4036; }
+    .project-role { margin-top: 14px; color: #675446; font: 600 11px/1.4 'JetBrains Mono', monospace; letter-spacing: 0.04em; text-transform: uppercase; }
+    #proj-tags, .project-telemetry { display: none; }
+    .project-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .btn-work-primary { background: #B64D32; border-color: #B64D32; color: #fff; box-shadow: none; }
+    .btn-work-primary:hover { background: #9E3E26; border-color: #9E3E26; color: #fff; }
+    .product-preview { width: 100%; }
+    .product-preview-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+    .product-preview-tabs { margin: 0; }
+    .product-preview-expand { flex: 0 0 auto; color: #7A2D1A; font: 600 11px/1.2 'JetBrains Mono', monospace; text-decoration: none; }
+    .product-preview-expand:hover { text-decoration: underline; }
+    .product-preview-frame { margin: 0; border-radius: 8px; }
+    .product-preview-image { max-height: none; aspect-ratio: 16 / 9; object-fit: cover; }
+    .product-preview-frame figcaption { padding: 10px 12px; color: #675446; background: #fff; font-size: 13px; line-height: 1.45; }
+    @media (min-width: 1024px) {
+      .project-showcase { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) !important; gap: 36px; }
+      .project-tabs { grid-column: 1 / -1; }
+      .project-story, .project-preview-panel { grid-column: auto / span 1 !important; }
+    }
+    @media (max-width: 1023px) {
+      .project-tabs > div:first-child { display: block; }
+      .project-tabs > div:first-child > div:first-child { margin-bottom: 8px; }
+      .project-preview-panel { border-left: 0 !important; border-top: 1px solid rgba(53, 37, 30, 0.14) !important; padding: 24px 0 0 !important; }
+      #project-detail-content { min-height: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #project-detail-content, #project-diagram { transition: none; transform: none !important; }
+    }
+
+    /* Interactive stack: readable controls with restrained, coordinated motion */
+    .expertise-inner { padding-left: clamp(24px, 4vw, 48px); padding-right: clamp(24px, 4vw, 48px); }
+    .expertise-detail-panel { border-color: rgba(53, 37, 30, 0.12) !important; box-shadow: 0 8px 20px -18px rgba(42, 29, 23, 0.32) !important; }
+    .expertise-stack-panel { border: 0 !important; background: transparent !important; box-shadow: none !important; }
+    .expertise-project-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: #9E3E26; font: 600 12px/1.4 'JetBrains Mono', monospace; text-decoration: none; }
+    .expertise-project-link span:last-child { transition: transform 150ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .expertise-project-link:hover span:last-child { transform: translateX(3px); }
+    .isometric-slab { transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), opacity 450ms cubic-bezier(0.22, 1, 0.36, 1), filter 180ms cubic-bezier(0.22, 1, 0.36, 1); }
+    .isometric-slab:focus-visible { outline-color: #B64D32; outline-offset: 5px; }
+    .isometric-slab:hover { filter: brightness(1.01); }
+    body.has-expertise-motion .expertise-reveal { opacity: 0; transform: translateY(12px); transition: opacity 500ms cubic-bezier(0.22, 1, 0.36, 1), transform 500ms cubic-bezier(0.22, 1, 0.36, 1); }
+    body.has-expertise-motion .expertise-reveal.is-visible { opacity: 1; transform: translateY(0); }
+    body.has-expertise-motion #isometric-stack-svg:not(.is-stack-visible) .isometric-slab { opacity: 0; }
+    #isometric-stack-svg .isometric-slab:nth-of-type(1) { transition-delay: 0ms; }
+    #isometric-stack-svg .isometric-slab:nth-of-type(2) { transition-delay: 60ms; }
+    #isometric-stack-svg .isometric-slab:nth-of-type(3) { transition-delay: 120ms; }
+    #isometric-stack-svg .isometric-slab:nth-of-type(4) { transition-delay: 180ms; }
+    .expertise-layer-controls button:focus-visible { outline: 2px solid #B64D32; outline-offset: 3px; }
+    @media (min-width: 1024px) { .expertise-detail-panel { min-height: 384px !important; } }
+    @media (max-width: 1023px) {
+      .expertise-stack-panel { order: 1; padding: 0 0 18px !important; }
+      .expertise-detail-panel { order: 2; }
+      .expertise-layer-controls { order: -1; }
+      #isometric-stack-svg { max-width: 390px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .isometric-slab, .expertise-project-link span:last-child, body.has-expertise-motion .expertise-reveal { transition: none !important; }
+      .expertise-project-link span:last-child, body.has-expertise-motion .expertise-reveal { transform: none !important; }
+    }
   </style>
   <script src="./hero.js" defer></script>
 </head>
@@ -6550,26 +6629,27 @@
         </div>
         <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">AI systems I’ve built.
         </h2>
+        <p class="project-section-intro">A selection of projects across AI applications, agent systems, and inference infrastructure.</p>
       </div>
-      <!-- Desktop 3-Column Interactive Showcase -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+      <!-- Project showcase -->
+      <div class="project-showcase grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         <!-- Col 1: Circular / Step Navigator (2 cols) -->
         <div
-          class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between">
+          class="project-tabs lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl p-4 flex flex-col justify-between">
           <div>
             <div class="font-meta-tag text-meta-tag text-on-surface-variant uppercase tracking-wider mb-4">Index</div>
-            <div class="space-y-3" id="project-nav-buttons">
-              <button class="work-nav-btn is-active" id="nav-btn-0" onclick="switchProject(0)">
+            <div class="space-y-3" id="project-nav-buttons" role="tablist" aria-label="Selected projects">
+              <button class="work-nav-btn is-active" id="nav-btn-0" type="button" role="tab" aria-selected="true" aria-controls="project-detail-content" onclick="switchProject(0)">
                 <span class="font-code-inline text-code-inline font-bold">01</span>
                 <span class="font-body-sm text-[12px] font-medium truncate ml-2">Betopia AI</span>
                 <span class="work-nav-dot"></span>
               </button>
-              <button class="work-nav-btn" id="nav-btn-1" onclick="switchProject(1)">
+              <button class="work-nav-btn" id="nav-btn-1" type="button" role="tab" aria-selected="false" aria-controls="project-detail-content" onclick="switchProject(1)">
                 <span class="font-code-inline text-code-inline font-medium">02</span>
                 <span class="font-body-sm text-[12px] truncate ml-2">Firecomm AI</span>
                 <span class="work-nav-dot"></span>
               </button>
-              <button class="work-nav-btn" id="nav-btn-2" onclick="switchProject(2)">
+              <button class="work-nav-btn" id="nav-btn-2" type="button" role="tab" aria-selected="false" aria-controls="project-detail-content" onclick="switchProject(2)">
                 <span class="font-code-inline text-code-inline font-medium">03</span>
                 <span class="font-body-sm text-[12px] truncate ml-2">Lawyer.AI</span>
                 <span class="work-nav-dot"></span>
@@ -6597,26 +6677,24 @@
         </div>
         <!-- Col 2: Project Details Panel (4 cols) -->
         <div
-          class="lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col justify-between">
+          class="project-story lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col justify-between">
           <div class="transition-opacity duration-300" id="project-detail-content">
             <!-- Populated by JS -->
             <div class="flex items-center justify-between pb-3 border-b border-surface-container">
               <span class="font-meta-tag text-meta-tag uppercase font-semibold text-primary-container"
                 id="proj-category">AI PLATFORM · AGENT SYSTEMS</span>
-              <span class="font-label-mono text-label-mono text-on-surface-variant" id="proj-index">NODE 01</span>
+              <span class="font-label-mono text-label-mono text-on-surface-variant" id="proj-index">STATUS: DEPLOYED</span>
             </div>
             <h3 class="font-headline-md text-headline-md font-bold text-on-surface mt-3" id="proj-title">Betopia AI</h3>
-            <p class="font-body-md text-body-md text-on-surface-variant mt-2" id="proj-desc">An internal AI ecosystem
-              spanning an LLM API gateway, agnetic harness web chat, a coding-agent CLI, and an IDE extension.</p>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-2" id="proj-desc">An AI platform connecting web chat, coding tools, and model infrastructure.</p>
+            <p class="project-role" id="proj-role">AI Engineer · AI Platform</p>
             <div class="mt-4 pt-4 border-t border-surface-container">
-              <h4 class="font-label-mono text-label-mono uppercase text-on-surface-variant font-medium">Core
-                Contribution</h4>
+              <h4 class="font-label-mono text-label-mono uppercase text-on-surface-variant font-medium">My contribution</h4>
               <p class="font-body-sm text-body-sm text-on-surface mt-1" id="proj-contrib">Built agent workflows, context
                 assembly, retrieval, tool calling, and self-hosted inference infrastructure.</p>
             </div>
             <div class="mt-4 pt-4 border-t border-surface-container">
-              <h4 class="font-label-mono text-label-mono uppercase text-on-surface-variant font-medium">Key Highlights
-              </h4>
+              <h4 class="font-label-mono text-label-mono uppercase text-on-surface-variant font-medium">What makes it significant</h4>
               <ul class="mt-2 space-y-1.5 font-body-sm text-body-sm text-on-surface-variant" id="proj-highlights">
                 <li class="flex items-start gap-2">
                   <span class="text-primary-container mt-1">•</span>
@@ -6643,20 +6721,25 @@
                 class="px-2.5 py-1 rounded bg-surface-container font-label-mono text-label-mono text-on-surface-variant">FastAPI</span>
             </div>
           </div>
-          <div class="pt-6 mt-6 border-t border-surface-container">
-            <a class="btn-work-cta" data-path="case-study" href="#selected-work">
-              <span>Explore full case study</span>
+          <div class="project-actions pt-6 mt-6 border-t border-surface-container">
+            <a class="btn-work-cta btn-work-primary" href="#project-diagram">
+              <span>View case study</span>
               <span class="material-symbols-outlined text-[15px]" aria-hidden="true">arrow_forward</span>
+            </a>
+            <a class="btn-work-cta" id="project-live-link" href="https://betopia.ai" target="_blank" rel="noopener noreferrer"
+              aria-label="Visit Betopia AI (opens in a new tab)">
+              <span id="project-live-label">Visit live product</span>
+              <span class="material-symbols-outlined text-[15px]" aria-hidden="true">open_in_new</span>
             </a>
           </div>
         </div>
         <!-- Col 3: Technical Architecture Preview Container (6 cols) -->
         <div
-          class="lg:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col justify-between overflow-hidden relative">
+          class="project-preview-panel lg:col-span-6 bg-surface-container-lowest border border-outline-variant rounded-xl p-6 flex flex-col justify-between overflow-hidden relative">
           <div class="flex items-center justify-between pb-3 border-b border-surface-container">
             <div class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-primary-container text-[18px]">schema</span>
-              <span class="font-meta-tag text-meta-tag uppercase text-on-surface-variant tracking-wider">Topology
+              <span class="material-symbols-outlined text-primary-container text-[18px]" id="project-visual-icon">schema</span>
+              <span class="font-meta-tag text-meta-tag uppercase text-on-surface-variant tracking-wider" id="project-visual-title">Topology
                 Blueprint</span>
             </div>
             <span class="font-label-mono text-label-mono text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded"
@@ -6715,8 +6798,7 @@
             </svg>
           </div>
           <!-- Telemetry footer -->
-          <div
-            class="pt-3 border-t border-surface-container flex items-center justify-between text-on-surface-variant font-label-mono text-[11px]">
+          <div class="project-telemetry pt-3 border-t border-surface-container flex items-center justify-between text-on-surface-variant font-label-mono text-[11px]">
             <span id="diagram-meta-left">Node Latency: 22ms</span>
             <span id="diagram-meta-right">Cluster: 8x L40S Inference Nodes</span>
           </div>
@@ -6771,12 +6853,11 @@
     <!-- SECTION 3: WHAT I WORK ON (ISOMETRIC LAYERED STACK) -->
     <div id="expertise" class="relative">
       <div id="expertise-scroll-track" class="relative lg:min-h-[280vh]">
-        <div id="expertise-sticky-container"
-          class="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] flex flex-col justify-center py-8">
-          <div class="w-full max-w-[1280px] mx-auto px-margin-mobile lg:px-margin">
+        <div id="expertise-sticky-container" class="lg:sticky lg:top-20 lg:h-[calc(100vh-5rem)] flex flex-col justify-center py-8">
+          <div class="expertise-inner w-full max-w-[1280px] mx-auto px-margin-mobile lg:px-margin">
 
             <!-- Section Header -->
-            <div class="mb-6 lg:mb-8">
+            <div class="expertise-heading expertise-reveal mb-5 lg:mb-6">
               <div class="flex items-center gap-2 mb-2">
                 <span
                   class="font-meta-tag text-meta-tag uppercase text-primary-container font-semibold tracking-wider">WHAT
@@ -6791,11 +6872,11 @@
             </div>
 
             <!-- Balanced Two-Column Layout -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="expertise-interactive expertise-reveal grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
 
               <!-- Left: Content Panel (5 cols) -->
               <div
-                class="lg:col-span-5 bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 sm:p-7 shadow-sm flex flex-col justify-center min-h-[360px]">
+                class="expertise-detail-panel lg:col-span-5 bg-surface-container-lowest border border-outline-variant rounded-2xl p-6 sm:p-7 shadow-sm flex flex-col justify-center min-h-[360px]">
                 <div class="transition-all duration-200" id="expertise-content-panel">
 
                   <!-- Title & Description -->
@@ -6835,6 +6916,7 @@
                       id="expertise-project">
                       Used in Betopia AI and Lawyer.AI — agent workflows and retrieval.
                     </p>
+                    <a class="expertise-project-link" id="expertise-project-link" href="#selected-work">Explore related work <span aria-hidden="true">↗</span></a>
                   </div>
 
                 </div>
@@ -6842,7 +6924,7 @@
 
               <!-- Right: 4-Tier Isometric Slabs Stack (7 cols) -->
               <div
-                class="lg:col-span-7 flex flex-col items-center justify-center p-6 sm:p-8 bg-surface-container-low/50 rounded-2xl border border-outline-variant/60 shadow-sm relative overflow-hidden">
+                class="expertise-stack-panel lg:col-span-7 flex flex-col items-center justify-center p-6 sm:p-8 bg-surface-container-low/50 rounded-2xl border border-outline-variant/60 shadow-sm relative overflow-hidden">
 
                 <!-- SVG Isometric Stack -->
                 <div class="w-full flex items-center justify-center relative min-h-[400px]">
@@ -6873,7 +6955,7 @@
                     <g class="isometric-slab" id="iso-slab-3" onclick="selectLayer(3, true)"
                       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectLayer(3,true);}"
                       tabindex="0" role="button" aria-pressed="false"
-                      aria-label="Select Applied Delivery and Deployment layer"
+                      aria-label="Select Delivery and Deployment layer"
                       style="transform: translate(260px, 335px);">
                       <ellipse class="slab-shadow" cx="0" cy="66" rx="145" ry="38" fill="#2A1D17" opacity="0.06"
                         filter="blur(6px)" />
@@ -6895,7 +6977,7 @@
                         </g>
                         <text class="slab-label" x="23" y="0" dominant-baseline="central"
                           font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600" fill="#2A1D17"
-                          letter-spacing="0.01em">04 · Applied Delivery</text>
+                          letter-spacing="0.01em">04 · Delivery &amp; Deployment</text>
                       </g>
                     </g>
 
@@ -6923,7 +7005,7 @@
                         </g>
                         <text class="slab-label" x="23" y="0" dominant-baseline="central"
                           font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="600" fill="#2A1D17"
-                          letter-spacing="0.01em">03 · Backend Engineering</text>
+                          letter-spacing="0.01em">03 · Backend</text>
                       </g>
                     </g>
 
@@ -6991,28 +7073,30 @@
                 </div>
 
                 <!-- 4 Compact Labeled Selector Buttons (Mobile Friendly) -->
-                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-5 w-full max-w-[480px]" role="tablist"
-                  aria-label="Architecture tiers">
+                <div class="expertise-layer-controls w-full max-w-[480px] mt-4">
+                  <p class="font-label-mono text-[11px] uppercase tracking-wider text-on-surface-variant mb-2">Select a layer to explore.</p>
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" role="tablist" aria-label="Architecture tiers">
                   <button id="mobile-tier-btn-0" onclick="selectLayer(0, true)" role="tab" aria-selected="true"
                     class="px-2.5 py-2 rounded-lg font-label-mono text-[11px] font-semibold transition-all border text-left flex items-center justify-between bg-primary-container text-white border-primary-container shadow-sm">
-                    <span class="truncate">01 AI Eng</span>
+                    <span class="truncate">AI Engineering</span>
                     <span class="w-1.5 h-1.5 rounded-full bg-white shrink-0 ml-1"></span>
                   </button>
                   <button id="mobile-tier-btn-1" onclick="selectLayer(1, true)" role="tab" aria-selected="false"
                     class="px-2.5 py-2 rounded-lg font-label-mono text-[11px] font-medium transition-all border text-left flex items-center justify-between bg-surface-container-lowest text-on-surface-variant border-outline-variant hover:border-primary-container/50">
-                    <span class="truncate">02 Inference</span>
+                    <span class="truncate">LLM Inference</span>
                     <span class="w-1.5 h-1.5 rounded-full bg-transparent shrink-0 ml-1"></span>
                   </button>
                   <button id="mobile-tier-btn-2" onclick="selectLayer(2, true)" role="tab" aria-selected="false"
                     class="px-2.5 py-2 rounded-lg font-label-mono text-[11px] font-medium transition-all border text-left flex items-center justify-between bg-surface-container-lowest text-on-surface-variant border-outline-variant hover:border-primary-container/50">
-                    <span class="truncate">03 Backend</span>
+                    <span class="truncate">Backend</span>
                     <span class="w-1.5 h-1.5 rounded-full bg-transparent shrink-0 ml-1"></span>
                   </button>
                   <button id="mobile-tier-btn-3" onclick="selectLayer(3, true)" role="tab" aria-selected="false"
                     class="px-2.5 py-2 rounded-lg font-label-mono text-[11px] font-medium transition-all border text-left flex items-center justify-between bg-surface-container-lowest text-on-surface-variant border-outline-variant hover:border-primary-container/50">
-                    <span class="truncate">04 Delivery</span>
+                    <span class="truncate">Delivery &amp; Deployment</span>
                     <span class="w-1.5 h-1.5 rounded-full bg-transparent shrink-0 ml-1"></span>
                   </button>
+                  </div>
                 </div>
 
               </div>
@@ -7519,8 +7603,9 @@
           category: "AI PLATFORM · AGENT SYSTEMS",
           index: "NODE 01",
           title: "Betopia AI",
-          desc: "An internal AI ecosystem spanning an LLM API gateway, agnetic harness  web chat, a coding-agent CLI, and an IDE extension.",
+          desc: "An AI platform connecting web chat, coding tools, and model infrastructure.",
           contrib: "Built agent workflows, context assembly, retrieval, tool calling, and self-hosted inference infrastructure.",
+          role: "AI Engineer · AI Platform",
           highlights: [
             "LangGraph agent runtime with explicit state checkpoints",
             "Dynamic context assembled from project schema, repo tree & session",
@@ -7528,6 +7613,31 @@
           ],
           tags: ["Python", "LangGraph", "vLLM", "FastAPI"],
           status: "STATUS: DEPLOYED",
+          liveUrl: "https://betopia.ai",
+          liveLabel: "Visit Betopia AI",
+          productPreviews: [
+            {
+              label: "Platform",
+              image: "assets/platform.png",
+              url: "https://platform.betopia.ai/login",
+              alt: "Betopia AI Platform sign-in screen",
+              caption: "Secure access to the platform that connects teams, API keys, and model services."
+            },
+            {
+              label: "Chat",
+              image: "assets/chat.png",
+              url: "https://chat.betopia.ai/",
+              alt: "Betopia AI chat workspace",
+              caption: "The web chat workspace for research, tool use, and project-aware assistance."
+            },
+            {
+              label: "CLI",
+              image: "assets/cli.png",
+              url: "https://betopia.ai/coder",
+              alt: "Betopia AI command-line coding agent",
+              caption: "The coding agent planning a task, editing files, and reporting the result in one terminal session."
+            }
+          ],
           metaLeft: "Node Latency: 22ms",
           metaRight: "Cluster: 8x L40S Inference Nodes",
           diagram: `
@@ -7573,6 +7683,7 @@
           title: "Firecomm AI",
           desc: "A role-aware agentic RAG platform designed for 2,200+ enterprise users, with cited answers over 500+ operational documents.",
           contrib: "Implemented access-scoped vector filtering, multi-query expansion, BM25 indexing, and strict citation enforcement.",
+          role: "AI Engineer · Enterprise Retrieval",
           highlights: [
             "Access-scoped retrieval respecting departmental permissions",
             "Dense and BM25 hybrid search with reciprocal rank fusion",
@@ -7580,6 +7691,8 @@
           ],
           tags: ["RAG", "Hybrid Search", "Access Control", "FastAPI"],
           status: "STATUS: PRODUCTION LIVE",
+          liveUrl: "https://ai.firecomm.com.au/",
+          liveLabel: "Visit Firecomm AI",
           metaLeft: "Audience: 2,200+ Users",
           metaRight: "Corpus: 500+ Technical Specs",
           diagram: `
@@ -7621,6 +7734,7 @@
           title: "Lawyer.AI",
           desc: "A legal-domain chatbot combining document retrieval, multi-agent workflows, and citation-aware responses.",
           contrib: "Designed hierarchical legal reasoning graphs with specialized statutory and case precedent analyzers.",
+          role: "AI Engineer · Legal AI",
           highlights: [
             "Dense & sparse retrieval over statutory codes & judgments",
             "Cross-encoder reranking to ensure case relevance",
@@ -7665,10 +7779,55 @@
       ];
 
       let currentProject = 0;
+      let currentPreview = 0;
+
+      function renderProjectVisual(project) {
+        const icon = document.getElementById('project-visual-icon');
+        const title = document.getElementById('project-visual-title');
+        const visual = document.getElementById('project-diagram');
+        if (!visual) return;
+
+        if (!project.productPreviews) {
+          if (icon) icon.innerText = 'schema';
+          if (title) title.innerText = 'System overview';
+          visual.innerHTML = project.diagram;
+          return;
+        }
+
+        const preview = project.productPreviews[currentPreview];
+        if (icon) icon.innerText = 'dashboard_customize';
+        if (title) title.innerText = 'Product preview';
+        visual.innerHTML = `
+          <div class="product-preview">
+            <div class="product-preview-toolbar">
+              <div class="product-preview-tabs" role="tablist" aria-label="Betopia AI product views">
+              ${project.productPreviews.map((item, idx) => `
+                <button class="product-preview-tab" type="button" role="tab" aria-selected="${idx === currentPreview}"
+                  aria-controls="product-preview-panel" onclick="switchProductPreview(${idx})">${item.label}</button>
+              `).join('')}
+              </div>
+              <a class="product-preview-expand" href="${preview.url}" target="_blank" rel="noopener noreferrer" aria-label="Open Betopia AI ${preview.label} (opens in a new tab)">Open ${preview.label} <span aria-hidden="true">↗</span></a>
+            </div>
+            <figure class="product-preview-frame" id="product-preview-panel" role="tabpanel">
+              <img class="product-preview-image" src="${preview.image}" alt="${preview.alt}">
+              <figcaption>${preview.caption}</figcaption>
+            </figure>
+          </div>`;
+      }
+
+      function switchProductPreview(idx) {
+        const project = projects[currentProject];
+        if (!project || !project.productPreviews || !project.productPreviews[idx]) return;
+        currentPreview = idx;
+        renderProjectVisual(project);
+      }
 
       function switchProject(idx) {
         currentProject = idx;
         const p = projects[idx];
+        currentPreview = 0;
+        const animatedPanels = [document.getElementById('project-detail-content'), document.getElementById('project-diagram')];
+        animatedPanels.forEach(panel => panel?.classList.add('is-switching'));
 
         // Update Buttons styling smoothly with active class
         for (let i = 0; i < 3; i++) {
@@ -7677,9 +7836,11 @@
           const numSpan = btn.querySelector('.font-code-inline');
           if (i === idx) {
             btn.classList.add('is-active');
+            btn.setAttribute('aria-selected', 'true');
             if (numSpan) numSpan.classList.add('font-bold');
           } else {
             btn.classList.remove('is-active');
+            btn.setAttribute('aria-selected', 'false');
             if (numSpan) numSpan.classList.remove('font-bold');
           }
         }
@@ -7698,10 +7859,24 @@
         const elDesc = document.getElementById('proj-desc');
         const elContrib = document.getElementById('proj-contrib');
         if (elCategory) elCategory.innerText = p.category;
-        if (elIndex) elIndex.innerText = p.index;
+        if (elIndex) elIndex.innerText = p.status;
         if (elTitle) elTitle.innerText = p.title;
         if (elDesc) elDesc.innerText = p.desc;
         if (elContrib) elContrib.innerText = p.contrib;
+        const elRole = document.getElementById('proj-role');
+        if (elRole) elRole.innerText = p.role;
+
+        const liveLink = document.getElementById('project-live-link');
+        const liveLabel = document.getElementById('project-live-label');
+        if (liveLink) {
+          const hasLiveUrl = Boolean(p.liveUrl);
+          liveLink.hidden = !hasLiveUrl;
+          if (hasLiveUrl) {
+            liveLink.href = p.liveUrl;
+            liveLink.setAttribute('aria-label', `${p.liveLabel} (opens in a new tab)`);
+          }
+        }
+        if (liveLabel && p.liveLabel) liveLabel.innerText = p.liveLabel;
 
         const hlList = document.getElementById('proj-highlights');
         if (hlList) {
@@ -7724,11 +7899,11 @@
         const elStatus = document.getElementById('diagram-status');
         const elMetaLeft = document.getElementById('diagram-meta-left');
         const elMetaRight = document.getElementById('diagram-meta-right');
-        const elDiagram = document.getElementById('project-diagram');
         if (elStatus) elStatus.innerText = p.status;
         if (elMetaLeft) elMetaLeft.innerText = p.metaLeft;
         if (elMetaRight) elMetaRight.innerText = p.metaRight;
-        if (elDiagram) elDiagram.innerHTML = p.diagram;
+        renderProjectVisual(p);
+        window.requestAnimationFrame(() => animatedPanels.forEach(panel => panel?.classList.remove('is-switching')));
       }
 
       // 2. ISOMETRIC LAYERED STACK LOGIC
@@ -7737,6 +7912,7 @@
           tier: "TIER 01 / 04",
           node: "NODE 01 OF 04",
           title: "AI Engineering",
+          stackLabel: "01 · AI Engineering",
           desc: "I build LLM applications that connect retrieval, context, and tools to support useful workflows.",
           caps: [
             "Agent workflows",
@@ -7750,6 +7926,7 @@
           tier: "TIER 02 / 04",
           node: "NODE 02 OF 04",
           title: "LLM Inference & Serving",
+          stackLabel: "02 · LLM Inference",
           desc: "I work on self-hosted model serving, focusing on response latency, GPU memory, and concurrent requests.",
           caps: [
             "vLLM serving",
@@ -7763,6 +7940,7 @@
           tier: "TIER 03 / 04",
           node: "NODE 03 OF 04",
           title: "Backend Engineering",
+          stackLabel: "03 · Backend",
           desc: "I build the APIs, data services, and integrations that connect AI capabilities to applications.",
           caps: [
             "Python & FastAPI",
@@ -7775,7 +7953,8 @@
         {
           tier: "TIER 04 / 04",
           node: "NODE 04 OF 04",
-          title: "Applied Delivery & Deployment",
+          title: "Delivery & Deployment",
+          stackLabel: "04 · Delivery & Deployment",
           desc: "I turn workflow requirements into integrated AI applications, package services for deployment, and refine them through feedback.",
           caps: [
             "Workflow requirements",
@@ -7796,25 +7975,37 @@
         if (idx < 0 || idx > 3) return;
         currentLayerIndex = idx;
         const d = expertiseData[idx];
+        const layerLift = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 12;
 
-        // 1. Crossfade left content panel (~180ms)
+        // 1. Update the story panel; reduced motion changes it immediately.
         const panel = document.getElementById('expertise-content-panel');
+        const updateExpertisePanel = () => {
+          document.getElementById('expertise-title').innerText = d.title;
+          document.getElementById('expertise-desc').innerText = d.desc;
+          document.getElementById('expertise-project').innerText = d.project;
+          document.getElementById('expertise-project-link').href = '#selected-work';
+          const chipsWrap = document.getElementById('expertise-chips');
+          chipsWrap.innerHTML = d.caps.map(c => `
+            <span class="px-2.5 py-1 rounded-md bg-surface-container font-label-mono text-label-mono text-on-surface border border-outline-variant/60">${c}</span>
+          `).join('');
+        };
         if (panel) {
-          panel.style.opacity = '0';
-          panel.style.transform = 'translateY(-4px)';
-          setTimeout(() => {
-            document.getElementById('expertise-title').innerText = d.title;
-            document.getElementById('expertise-desc').innerText = d.desc;
-            document.getElementById('expertise-project').innerText = d.project;
-
-            const chipsWrap = document.getElementById('expertise-chips');
-            chipsWrap.innerHTML = d.caps.map(c => `
-              <span class="px-2.5 py-1 rounded-md bg-surface-container font-label-mono text-label-mono text-on-surface border border-outline-variant/60">${c}</span>
-            `).join('');
-
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            updateExpertisePanel();
             panel.style.opacity = '1';
+            panel.style.transform = 'none';
+          } else {
+            panel.style.opacity = '0';
             panel.style.transform = 'translateY(0)';
-          }, 90);
+            setTimeout(() => {
+              updateExpertisePanel();
+            panel.style.transform = 'translateY(6px)';
+            window.requestAnimationFrame(() => {
+              panel.style.opacity = '1';
+              panel.style.transform = 'translateY(0)';
+            });
+            }, 100);
+          }
         }
 
         // 2. Animate 4 Isometric Slabs in SVG
@@ -7828,10 +8019,13 @@
           const shadow = slab.querySelector('.slab-shadow');
           const label = slab.querySelector('.slab-label');
           const icon = slab.querySelector('.slab-icon');
+          if (label) {
+            label.textContent = expertiseData[i].stackLabel;
+            label.setAttribute('font-size', i === 3 ? '9.5' : '10.5');
+          }
 
           if (i === idx) {
-            // Selected active slab: moves outward by 20px left, 12px up
-            slab.style.transform = `translate(240px, ${slabBaseY[i] - 12}px)`;
+            slab.style.transform = `translate(260px, ${slabBaseY[i] - layerLift}px)`;
             slab.setAttribute('aria-pressed', 'true');
             if (topFace) {
               topFace.setAttribute('fill', 'url(#slab-active-gradient)');
@@ -7848,8 +8042,8 @@
             }
             if (shadow) {
               shadow.setAttribute('fill', '#B64D32');
-              shadow.setAttribute('opacity', '0.25');
-              shadow.setAttribute('filter', 'blur(12px)');
+              shadow.setAttribute('opacity', '0.18');
+              shadow.setAttribute('filter', 'blur(5px)');
             }
             if (label) label.setAttribute('fill', '#FFFFFF');
             if (icon) icon.setAttribute('stroke', '#FFFFFF');
@@ -7860,9 +8054,7 @@
               svg.appendChild(slab);
             }
           } else {
-            // Neighboring inactive slabs: subtle 4px separation from active
-            const offset = i < idx ? -4 : 4;
-            slab.style.transform = `translate(260px, ${slabBaseY[i] + offset}px)`;
+            slab.style.transform = `translate(260px, ${slabBaseY[i]}px)`;
             slab.setAttribute('aria-pressed', 'false');
             if (topFace) {
               topFace.setAttribute('fill', '#FFFFFF');
@@ -7880,7 +8072,7 @@
             if (shadow) {
               shadow.setAttribute('fill', '#2A1D17');
               shadow.setAttribute('opacity', '0.06');
-              shadow.setAttribute('filter', 'blur(6px)');
+              shadow.setAttribute('filter', 'blur(3px)');
             }
             if (label) label.setAttribute('fill', '#2A1D17');
             if (icon) icon.setAttribute('stroke', '#2A1D17');
@@ -7903,62 +8095,66 @@
           }
         }
 
-        // 4. Scroll synchronization on desktop
+        // A direct layer selection also moves the desktop story to its matching scroll position.
         const track = document.getElementById('expertise-scroll-track');
-        if (fromClick && track && window.innerWidth >= 1024 && window.innerHeight >= 650) {
-          if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            isProgrammaticScroll = true;
-            clearTimeout(scrollClearTimer);
-            const scrollableRange = track.offsetHeight - window.innerHeight;
-            const targetScrollY = track.offsetTop + (scrollableRange * (idx / 3.2));
-            window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
-            scrollClearTimer = setTimeout(() => {
-              isProgrammaticScroll = false;
-            }, 600);
-          }
+        if (fromClick && track && window.innerWidth >= 1024 && window.innerHeight >= 650 &&
+          !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          isProgrammaticScroll = true;
+          clearTimeout(scrollClearTimer);
+          const scrollableRange = track.offsetHeight - window.innerHeight;
+          const targetScrollY = track.offsetTop + (scrollableRange * (idx / 3.2));
+          window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
+          scrollClearTimer = setTimeout(() => { isProgrammaticScroll = false; }, 600);
         }
+
       }
 
-      // Add gentle 3px hover lift to inactive slabs
+      // Lift an unselected layer just enough to indicate it is interactive.
       for (let i = 0; i < 4; i++) {
         const slab = document.getElementById(`iso-slab-${i}`);
         if (!slab) continue;
         slab.addEventListener('mouseenter', () => {
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
           if (i !== currentLayerIndex) {
-            const offset = i < currentLayerIndex ? -4 : 4;
-            slab.style.transform = `translate(257px, ${slabBaseY[i] + offset - 3}px)`;
+            slab.style.transform = `translate(260px, ${slabBaseY[i] - 4}px)`;
           }
         });
         slab.addEventListener('mouseleave', () => {
           if (i !== currentLayerIndex) {
-            const offset = i < currentLayerIndex ? -4 : 4;
-            slab.style.transform = `translate(260px, ${slabBaseY[i] + offset}px)`;
+            slab.style.transform = `translate(260px, ${slabBaseY[i]}px)`;
           }
         });
       }
 
-      // Scroll-driven layer selection in desktop sticky track
+      // Desktop scroll position selects the corresponding layer while the stack is pinned.
       window.addEventListener('scroll', () => {
-        if (isProgrammaticScroll) return;
+        if (isProgrammaticScroll || window.innerWidth < 1024 || window.innerHeight < 650) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         const track = document.getElementById('expertise-scroll-track');
         if (!track) return;
-        if (window.innerWidth < 1024 || window.innerHeight < 650) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
         const rect = track.getBoundingClientRect();
-        const topThreshold = 85; // navbar clearance
-
-        if (rect.top <= topThreshold && rect.bottom >= window.innerHeight) {
-          const scrollableRange = track.offsetHeight - window.innerHeight;
-          const scrolledAmount = topThreshold - rect.top;
-          const progress = Math.min(0.999, Math.max(0, scrolledAmount / scrollableRange));
-          const targetLayer = Math.min(3, Math.floor(progress * 4));
-
-          if (targetLayer !== currentLayerIndex) {
-            selectLayer(targetLayer, false);
-          }
-        }
+        const topThreshold = 85;
+        if (rect.top > topThreshold || rect.bottom < window.innerHeight) return;
+        const scrollableRange = track.offsetHeight - window.innerHeight;
+        const progress = Math.min(0.999, Math.max(0, (topThreshold - rect.top) / scrollableRange));
+        const targetLayer = Math.min(3, Math.floor(progress * 4));
+        if (targetLayer !== currentLayerIndex) selectLayer(targetLayer, false);
       }, { passive: true });
+
+      const reduceExpertiseMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduceExpertiseMotion && 'IntersectionObserver' in window) {
+        document.body.classList.add('has-expertise-motion');
+        const revealObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-visible');
+            const stack = entry.target.querySelector('#isometric-stack-svg');
+            if (stack) stack.classList.add('is-stack-visible');
+            revealObserver.unobserve(entry.target);
+          });
+        }, { threshold: 0.18 });
+        document.querySelectorAll('.expertise-reveal').forEach(element => revealObserver.observe(element));
+      }
 
       // 3. ORBITAL TECH STACK LOGIC
       const techData = {

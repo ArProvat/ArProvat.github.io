@@ -20,6 +20,19 @@
     }
   },
   {
+    "id": "ai-artifact-runtime-html",
+    "slug": "ai-artifact-runtime-html",
+    "title": "Engineering an AI Artifact Runtime: HTML All You Need",
+    "category": "ai-engineering",
+    "categoryLabel": "AI ENGINEERING",
+    "featured": false,
+    "date": "2024-10-15",
+    "dateFormatted": "October 15, 2024",
+    "platform": "Medium",
+    "url": "https://medium.com/@provatar0/engineering-an-ai-artifact-runtime-html-all-you-need-93c40bc7fa5b",
+    "excerpt": "A Medium article on engineering an AI artifact runtime with an HTML-first approach."
+  },
+  {
     "id": "stateful-multi-agent-langgraph",
     "slug": "stateful-multi-agent-langgraph",
     "title": "Building Stateful Multi-Agent Runtimes with LangGraph and Human-in-the-Loop Safeguards",

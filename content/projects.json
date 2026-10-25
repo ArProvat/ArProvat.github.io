@@ -4,8 +4,9 @@
     "category": "AI PLATFORM · AGENT SYSTEMS",
     "index": "NODE 01",
     "title": "Betopia AI",
-    "desc": "An internal AI ecosystem spanning an LLM API gateway, agentic harness web chat, a coding-agent CLI, and an IDE extension.",
+    "desc": "An AI platform connecting web chat, coding tools, and model infrastructure.",
     "contrib": "Built agent workflows, context assembly, retrieval, tool calling, and self-hosted inference infrastructure.",
+    "role": "AI Engineer · AI Platform",
     "highlights": [
       "LangGraph agent runtime with explicit state checkpoints",
       "Dynamic context assembled from project schema, repo tree & session",
@@ -18,6 +19,28 @@
       "FastAPI"
     ],
     "status": "STATUS: DEPLOYED",
+    "liveUrl": "https://betopia.ai",
+    "liveLabel": "Visit Betopia AI",
+    "productPreviews": [
+      {
+        "label": "Platform",
+        "image": "assets/platform.png",
+        "url": "https://platform.betopia.ai/login",
+        "alt": "Betopia AI Platform sign-in screen"
+      },
+      {
+        "label": "Chat",
+        "image": "assets/chat.png",
+        "url": "https://chat.betopia.ai/",
+        "alt": "Betopia AI chat workspace"
+      },
+      {
+        "label": "CLI",
+        "image": "assets/cli.png",
+        "url": "https://betopia.ai/coder",
+        "alt": "Betopia AI command-line coding agent"
+      }
+    ],
     "metaLeft": "Audience: 700+ Employees",
     "metaRight": "Inference: Blackwell 96GB GPU",
     "featured": true
@@ -29,6 +52,7 @@
     "title": "Firecomm AI",
     "desc": "A role-aware agentic RAG platform designed for 2,200+ enterprise users, with cited answers over 500+ operational documents.",
     "contrib": "Implemented access-scoped vector filtering, multi-query expansion, BM25 indexing, and strict citation enforcement.",
+    "role": "AI Engineer · Enterprise Retrieval",
     "highlights": [
       "Access-scoped retrieval respecting departmental permissions",
       "Dense and BM25 hybrid search with reciprocal rank fusion",
@@ -41,6 +65,8 @@
       "FastAPI"
     ],
     "status": "STATUS: PRODUCTION LIVE",
+    "liveUrl": "https://ai.firecomm.com.au/",
+    "liveLabel": "Visit Firecomm AI",
     "metaLeft": "Audience: 2,200+ Users",
     "metaRight": "Corpus: 500+ Technical Specs",
     "featured": true
@@ -52,6 +78,7 @@
     "title": "Lawyer.AI",
     "desc": "A legal-domain chatbot combining document retrieval, multi-agent workflows, and citation-aware responses.",
     "contrib": "Designed hierarchical legal reasoning graphs with specialized statutory and case precedent analyzers.",
+    "role": "AI Engineer · Legal AI",
     "highlights": [
       "Dense & sparse retrieval over statutory codes & judgments",
       "Cross-encoder reranking to ensure case relevance",

@@ -1,7 +1,6 @@
 (() => {
   const topics = ['All', 'AI Engineering', 'LLM Inference', 'RAG & Agents', 'Backend', 'Deployment'];
-  const preview = new URLSearchParams(location.search).get('preview') === '1';
-  const raw = preview ? window.WRITING_SAMPLES : window.WRITING_ARTICLES;
+  const raw = window.WRITING_ARTICLES;
 
   function validUrl(value) {
     try {
@@ -26,7 +25,7 @@
       validUrl(article.url) && validDate(article.publishedAt);
   }
   const articles = (Array.isArray(raw) ? raw : [])
-    .filter(preview ? article => article?.status === 'sample' : published)
+    .filter(published)
     .sort((a, b) => (b.publishedAt || '').localeCompare(a.publishedAt || ''));
 
   function el(tag, className, value) {
@@ -109,6 +108,7 @@
   function latest() {
     const list = document.getElementById('latest-writing-list');
     if (!list) return;
+    list.replaceChildren();
     if (!articles.length) {
       list.append(el('p', 'latest-writing-empty', 'Writing is on the way. Articles and practical notes will appear here.'));
       return;
@@ -121,10 +121,10 @@
         item.rel = 'noopener noreferrer';
         item.setAttribute('aria-label', `Read ${article.title} on ${platformName(article)} (opens in a new tab)`);
       }
-      item.append(el('span', 'writing-topic', preview ? `${article.topic} · sample` : article.topic), el('strong', '', article.title));
+      item.append(el('span', 'writing-topic', article.topic), el('strong', '', article.title));
       const footer = el('span', 'latest-writing-item-footer');
       footer.append(el('span', '', `${platformName(article)} · ${dateText(article.publishedAt)}`));
-      if (!preview) footer.append(el('span', 'latest-writing-arrow', '↗'));
+      footer.append(el('span', 'latest-writing-arrow', '↗'));
       item.append(footer);
       list.append(item);
     });
@@ -142,7 +142,6 @@
     document.addEventListener('keydown', event => { if (event.key === 'Escape' && !mobileNav.hidden) { closeMenu(); menu.focus(); } });
     document.addEventListener('click', event => { if (!mobileNav.hidden && !mobileNav.contains(event.target) && !menu.contains(event.target)) closeMenu(); });
 
-    if (preview) document.getElementById('writing-preview-banner').hidden = false;
     if (!articles.length) { document.getElementById('writing-empty').hidden = false; return; }
     const featured = articles.find(article => article.featured);
     if (featured) {
