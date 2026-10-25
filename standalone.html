@@ -1494,7 +1494,7 @@ window.WRITING_ARTICLES = [
     #site-header { height: 76px; }
     #selected-work { scroll-margin-top: 96px; }
     .project-section-intro { max-width: 620px; margin-top: 10px; color: #675446; font-size: 16px; line-height: 1.55; }
-    .project-showcase { align-items: start; }
+    .project-showcase { align-items: stretch; column-gap: clamp(28px, 4vw, 56px); row-gap: 24px; }
     .project-tabs { grid-column: 1 / -1; padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; }
     .project-tabs > div:first-child { display: flex; align-items: center; gap: 20px; min-width: 0; }
     .project-tabs > div:first-child > div:first-child { margin: 0; flex: 0 0 auto; }
@@ -1506,7 +1506,7 @@ window.WRITING_ARTICLES = [
     .work-nav-btn.is-active { border-bottom-color: #B64D32; color: #2A1D17; }
     .work-nav-dot { display: none; }
     .project-story, .project-preview-panel { padding: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; box-shadow: none !important; }
-    .project-preview-panel { border-left: 1px solid rgba(53, 37, 30, 0.14) !important; padding-left: clamp(24px, 3vw, 48px) !important; }
+    .project-preview-panel { justify-content: flex-start !important; border-left: 1px solid rgba(53, 37, 30, 0.14) !important; padding-left: clamp(24px, 3vw, 48px) !important; }
     #project-detail-content { min-height: 460px; transition: opacity 180ms ease, transform 180ms ease; }
     #project-diagram { min-height: 0; margin: 18px 0 0; transition: opacity 180ms ease, transform 180ms ease; }
     #project-detail-content.is-switching, #project-diagram.is-switching { opacity: 0.45; transform: translateY(4px); }
@@ -1525,9 +1525,9 @@ window.WRITING_ARTICLES = [
     .product-preview-image { max-height: none; aspect-ratio: 16 / 9; object-fit: cover; }
     .product-preview-frame figcaption { padding: 10px 12px; color: #675446; background: #fff; font-size: 13px; line-height: 1.45; }
     @media (min-width: 1024px) {
-      .project-showcase { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) !important; gap: 36px; }
+      .project-showcase { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) !important; }
       .project-tabs { grid-column: 1 / -1; }
-      .project-story, .project-preview-panel { grid-column: auto / span 1 !important; }
+      .project-story, .project-preview-panel { grid-column: auto / span 1 !important; min-width: 0; }
     }
     @media (max-width: 1023px) {
       .project-tabs > div:first-child { display: block; }
@@ -7387,7 +7387,7 @@ window.WRITING_ARTICLES = [
             class="font-meta-tag text-meta-tag uppercase text-primary-container font-semibold tracking-wider">SELECTED
             WORK</span>
           <span class="text-outline-variant">—</span>
-          <span class="font-label-mono text-label-mono text-on-surface-variant">PRODUCTION SYSTEMS</span>
+          <span class="font-label-mono text-label-mono text-on-surface-variant">AI APPLICATIONS</span>
         </div>
         <h2 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">AI systems I’ve built.
         </h2>
@@ -7445,7 +7445,6 @@ window.WRITING_ARTICLES = [
             <div class="flex items-center justify-between pb-3 border-b border-surface-container">
               <span class="font-meta-tag text-meta-tag uppercase font-semibold text-primary-container"
                 id="proj-category">AI PLATFORM · AGENT SYSTEMS</span>
-              <span class="font-label-mono text-label-mono text-on-surface-variant" id="proj-index">STATUS: DEPLOYED</span>
             </div>
             <h3 class="font-headline-md text-headline-md font-bold text-on-surface mt-3" id="proj-title">Betopia AI</h3>
             <p class="font-body-md text-body-md text-on-surface-variant mt-2" id="proj-desc">An AI platform connecting web chat, coding tools, and model infrastructure.</p>
@@ -7504,8 +7503,6 @@ window.WRITING_ARTICLES = [
               <span class="font-meta-tag text-meta-tag uppercase text-on-surface-variant tracking-wider" id="project-visual-title">Topology
                 Blueprint</span>
             </div>
-            <span class="font-label-mono text-label-mono text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded"
-              id="diagram-status">STATUS: DEPLOYED</span>
           </div>
           <!-- SVG Container dynamically swapped -->
           <div class="my-4 flex items-center justify-center min-h-[300px]" id="project-diagram">
@@ -7558,11 +7555,6 @@ window.WRITING_ARTICLES = [
               <text x="415" y="242" font-family="JetBrains Mono" font-size="7.5" fill="#B5711C"
                 text-anchor="middle">Reranked via CrossEnc</text>
             </svg>
-          </div>
-          <!-- Telemetry footer -->
-          <div class="project-telemetry pt-3 border-t border-surface-container flex items-center justify-between text-on-surface-variant font-label-mono text-[11px]">
-            <span id="diagram-meta-left">Node Latency: 22ms</span>
-            <span id="diagram-meta-right">Cluster: 8x L40S Inference Nodes</span>
           </div>
         </div>
       </div>
@@ -8374,7 +8366,6 @@ window.WRITING_ARTICLES = [
             "Self-hosted low-latency inference with vLLM engine"
           ],
           tags: ["Python", "LangGraph", "vLLM", "FastAPI"],
-          status: "STATUS: DEPLOYED",
           liveUrl: "https://betopia.ai",
           liveLabel: "Visit Betopia AI",
           productPreviews: [
@@ -8400,8 +8391,6 @@ window.WRITING_ARTICLES = [
               caption: "The coding agent planning a task, editing files, and reporting the result in one terminal session."
             }
           ],
-          metaLeft: "Node Latency: 22ms",
-          metaRight: "Cluster: 8x L40S Inference Nodes",
           diagram: `
             <svg class="w-full max-h-[340px]" viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -8452,11 +8441,8 @@ window.WRITING_ARTICLES = [
             "Grounded answers with direct page-level citations & confidence scores"
           ],
           tags: ["RAG", "Hybrid Search", "Access Control", "FastAPI"],
-          status: "STATUS: PRODUCTION LIVE",
           liveUrl: "https://ai.firecomm.com.au/",
           liveLabel: "Visit Firecomm AI",
-          metaLeft: "Audience: 2,200+ Users",
-          metaRight: "Corpus: 500+ Technical Specs",
           diagram: `
             <svg class="w-full max-h-[340px]" viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -8503,9 +8489,6 @@ window.WRITING_ARTICLES = [
             "Persistent multi-turn conversation state with checkpointing"
           ],
           tags: ["Python", "LangGraph", "ChromaDB", "FastAPI"],
-          status: "STATUS: COMPLETED",
-          metaLeft: "Domain: Penal & Civil Law",
-          metaRight: "Index: ChromaDB Vector Store",
           diagram: `
             <svg class="w-full max-h-[340px]" viewBox="0 0 500 320" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
@@ -8616,12 +8599,10 @@ window.WRITING_ARTICLES = [
 
         // Update Details Content
         const elCategory = document.getElementById('proj-category');
-        const elIndex = document.getElementById('proj-index');
         const elTitle = document.getElementById('proj-title');
         const elDesc = document.getElementById('proj-desc');
         const elContrib = document.getElementById('proj-contrib');
         if (elCategory) elCategory.innerText = p.category;
-        if (elIndex) elIndex.innerText = p.status;
         if (elTitle) elTitle.innerText = p.title;
         if (elDesc) elDesc.innerText = p.desc;
         if (elContrib) elContrib.innerText = p.contrib;
@@ -8657,13 +8638,6 @@ window.WRITING_ARTICLES = [
           `).join('');
         }
 
-        // Update Diagram
-        const elStatus = document.getElementById('diagram-status');
-        const elMetaLeft = document.getElementById('diagram-meta-left');
-        const elMetaRight = document.getElementById('diagram-meta-right');
-        if (elStatus) elStatus.innerText = p.status;
-        if (elMetaLeft) elMetaLeft.innerText = p.metaLeft;
-        if (elMetaRight) elMetaRight.innerText = p.metaRight;
         renderProjectVisual(p);
         window.requestAnimationFrame(() => animatedPanels.forEach(panel => panel?.classList.remove('is-switching')));
       }

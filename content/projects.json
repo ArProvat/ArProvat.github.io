@@ -18,7 +18,6 @@
       "vLLM",
       "FastAPI"
     ],
-    "status": "STATUS: DEPLOYED",
     "liveUrl": "https://betopia.ai",
     "liveLabel": "Visit Betopia AI",
     "productPreviews": [
@@ -41,8 +40,6 @@
         "alt": "Betopia AI command-line coding agent"
       }
     ],
-    "metaLeft": "Audience: 700+ Employees",
-    "metaRight": "Inference: Blackwell 96GB GPU",
     "featured": true
   },
   {
@@ -64,11 +61,8 @@
       "Access Control",
       "FastAPI"
     ],
-    "status": "STATUS: PRODUCTION LIVE",
     "liveUrl": "https://ai.firecomm.com.au/",
     "liveLabel": "Visit Firecomm AI",
-    "metaLeft": "Audience: 2,200+ Users",
-    "metaRight": "Corpus: 500+ Technical Specs",
     "featured": true
   },
   {
@@ -90,9 +84,6 @@
       "ChromaDB",
       "FastAPI"
     ],
-    "status": "STATUS: COMPLETED",
-    "metaLeft": "Domain: Penal & Civil Law",
-    "metaRight": "Index: ChromaDB Vector Store",
     "featured": true
   },
   {
@@ -114,9 +105,6 @@
       "RLHF",
       "Transformers"
     ],
-    "status": "STATUS: COMPLETED",
-    "metaLeft": "Framework: TRL / Transformers",
-    "metaRight": "Method: GRPO Alignment",
     "featured": false
   },
   {
@@ -138,9 +126,6 @@
       "LoRA",
       "BanglaBERT"
     ],
-    "status": "STATUS: COMPLETED",
-    "metaLeft": "Accuracy: 72%",
-    "metaRight": "Quantization: 4-bit QLoRA",
     "featured": false
   },
   {
@@ -161,9 +146,6 @@
       "Claude AI",
       "MCP"
     ],
-    "status": "STATUS: COMPLETED",
-    "metaLeft": "Protocol: Model Context Protocol",
-    "metaRight": "Database: PostgreSQL",
     "featured": false
   }
 ]
